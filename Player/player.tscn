@@ -367,3 +367,10 @@ position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_l8h54")
 animation = &"Walk"
 autoplay = "Idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1185
+limit_bottom = 575
