@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg54nfilba6ij"]
+[gd_scene load_steps=3 format=3 uid="uid://cg54nfilba6ij"]
 
 [ext_resource type="PackedScene" uid="uid://dg6tbf8uavjqm" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://do34yctou3plv" path="res://scripts/meteorite_spawner.gd" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
 position = Vector2(-1, -1)
+scale = Vector2(0.5, 0.5)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="MeteoriteSpawner" type="Node2D" parent="."]
+script = ExtResource("3_lnu2h")
