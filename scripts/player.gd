@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 const SPEED = 300
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta):
 	var direction = Vector2.ZERO
 
@@ -27,3 +28,16 @@ func _physics_process(delta):
 		animated_sprite.play("idle")
 	else:
 		animated_sprite.play("run")
+
+func take_damage(amount: int):
+	GameState.player_health -= amount
+	GameState.player_health = clamp(GameState.player_health, 0, GameState.max_health)
+	
+	print("Health: ", GameState.player_health)
+	
+	if GameState.player_health <= 0:
+		die()
+		
+func die():
+	print("Player died")
+	$"../GameOverScreen".visible = true

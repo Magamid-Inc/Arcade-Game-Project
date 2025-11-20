@@ -14,20 +14,17 @@ const METEOR_SCENE: PackedScene = preload("res://scenes/meteorite.tscn")
 
 func _ready() -> void:
 	randomize()
-	print("MeteorSpawner ready")
 	_schedule_next()
 
 
 func _schedule_next() -> void:
 	var delay: float = randf_range(min_delay, max_delay)
-	print("Next meteor in:", delay)
 	get_tree().create_timer(delay).timeout.connect(_spawn_meteor)
 
 
 func _spawn_meteor() -> void:
 	var camera: Camera2D = get_viewport().get_camera_2d()
 	if camera == null:
-		print("No Camera2D found, cannot spawn meteors")
 		_schedule_next()
 		return
 
@@ -58,7 +55,6 @@ func _spawn_meteor() -> void:
 			spawn_pos.y = randf_range(cam_pos.y - half_size.y, cam_pos.y + half_size.y)
 
 	meteor.global_position = spawn_pos
-	print("Spawn meteor at:", spawn_pos, "from side:", side)
 
 	# ---- Направление "то рандомно, то нет" ----
 	var dir: Vector2
