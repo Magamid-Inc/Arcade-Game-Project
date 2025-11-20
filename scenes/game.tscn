@@ -1,17 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg54nfilba6ij"]
+[gd_scene load_steps=5 format=3 uid="uid://cg54nfilba6ij"]
 
 [ext_resource type="PackedScene" uid="uid://dg6tbf8uavjqm" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bs11g523nrrfd" path="res://scripts/player_health_ui.gd" id="2_lnu2h"]
 [ext_resource type="Script" uid="uid://do34yctou3plv" path="res://scripts/meteorite_spawner.gd" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://yw5us6qmussq" path="res://assets/background_placeholder_texture.png" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="GameOverScreen"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.5
+offset_top = -38.5
+offset_right = 212.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Игра окончена"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
 position = Vector2(-1, -1)
 scale = Vector2(0.5, 0.5)
+
+[node name="PlayerHealthUi" type="Label" parent="Player"]
+offset_left = -82.0
+offset_top = 18.0
+offset_right = 74.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 31
+text = "10/10"
+horizontal_alignment = 1
+script = ExtResource("2_lnu2h")
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 
 [node name="MeteoriteSpawner" type="Node2D" parent="."]
 script = ExtResource("3_lnu2h")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.5609549, 0.5609549, 0.5609549, 1)
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -591.0
+offset_top = -340.0
+offset_right = 591.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("4_lbhrr")
+stretch_mode = 1
