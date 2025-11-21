@@ -81,7 +81,6 @@ func _spawn_meteor() -> void:
 		dir = (center_target - spawn_pos).normalized()
 
 	var speed: float = randf_range(min_speed, max_speed)
-
 	meteor.velocity = dir * speed
 
 	_schedule_next()

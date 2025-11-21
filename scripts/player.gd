@@ -1,21 +1,24 @@
 extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var check_die: bool = false
 
 const SPEED = 300
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
 	var direction = Vector2.ZERO
-
-	if Input.is_action_pressed("move_up"):
-		direction.y -= 1
-	if Input.is_action_pressed("move_down"):
-		direction.y += 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
+	
+	if not check_die:
+		if Input.is_action_pressed("move_up"):
+			direction.y -= 1
+		if Input.is_action_pressed("move_down"):
+			direction.y += 1
+		if Input.is_action_pressed("move_left"):
+			direction.x -= 1
+		if Input.is_action_pressed("move_right"):
+			direction.x += 1
 
 	velocity = direction.normalized() * SPEED
 	move_and_slide()
@@ -28,6 +31,9 @@ func _physics_process(delta):
 		animated_sprite.play("idle")
 	else:
 		animated_sprite.play("run")
+	if check_die:
+		collision_shape.disabled = true
+		animated_sprite.play("die")
 
 func take_damage(amount: int):
 	GameState.player_health -= amount
@@ -36,6 +42,7 @@ func take_damage(amount: int):
 	print("Health: ", GameState.player_health)
 	
 	if GameState.player_health <= 0:
+		check_die = true
 		die()
 		
 func die():
