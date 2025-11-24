@@ -14,8 +14,10 @@ script = ExtResource("1_ur1br")
 texture = ExtResource("1_ghl35")
 
 [node name="DamageZone" parent="." instance=ExtResource("2_ur1br")]
+collision_layer = 8
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
-light_mask = 3
-visibility_layer = 3
+light_mask = 2
+visibility_layer = 2
 shape = SubResource("CircleShape2D_cdrwk")

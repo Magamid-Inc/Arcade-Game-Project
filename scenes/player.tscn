@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg6tbf8uavjqm"]
+[gd_scene load_steps=16 format=3 uid="uid://dg6tbf8uavjqm"]
 
 [ext_resource type="Script" uid="uid://dp1rhtqgj0iq0" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bl13plhfbh3kf" path="res://assets/player/defeat (расстояние 10px).png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bysjnpi320gvx" path="res://assets/player/front idle.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bgcxdgsttdypq" path="res://assets/player/run (64_106).png" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://b8nykpkq7cwwe" path="res://scripts/inventory.gd" id="5_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://du2fxar8rad4s" path="res://scenes/inventory_slot.tscn" id="6_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("2_dqkch")
@@ -76,7 +78,8 @@ animations = [{
 size = Vector2(49, 102)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 4
+collision_mask = 13
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -90,3 +93,39 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -61)
 shape = SubResource("RectangleShape2D_3v2ag")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("5_tuyoq")
+
+[node name="InventoryWindow" type="Panel" parent="Inventory"]
+custom_minimum_size = Vector2(424, 112)
+offset_left = -212.0
+offset_top = 216.0
+offset_right = 212.0
+offset_bottom = 328.0
+
+[node name="SlotContainer" type="GridContainer" parent="Inventory/InventoryWindow"]
+custom_minimum_size = Vector2(408, 96)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 416.0
+offset_bottom = 104.0
+theme_override_constants/h_separation = 8
+columns = 4
+
+[node name="InventorySlot" parent="Inventory/InventoryWindow/SlotContainer" instance=ExtResource("6_fjrip")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InventorySlot2" parent="Inventory/InventoryWindow/SlotContainer" instance=ExtResource("6_fjrip")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InventorySlot3" parent="Inventory/InventoryWindow/SlotContainer" instance=ExtResource("6_fjrip")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Inventory/InventoryWindow/SlotContainer" instance=ExtResource("6_fjrip")]
+layout_mode = 2
