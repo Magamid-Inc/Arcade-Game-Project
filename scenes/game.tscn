@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cg54nfilba6ij"]
+[gd_scene load_steps=18 format=4 uid="uid://cg54nfilba6ij"]
 
 [ext_resource type="PackedScene" uid="uid://dg6tbf8uavjqm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bs11g523nrrfd" path="res://scripts/player_health_ui.gd" id="2_lnu2h"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cj6xrd7rqs2ia" path="res://assets/locationDesign/floor.png" id="6_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bpjkisxi0nyvl" path="res://assets/locationDesign/wall main.png" id="7_vtaks"]
 [ext_resource type="Texture2D" uid="uid://0virl05qr8xg" path="res://assets/locationDesign/wall.png" id="8_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dp24jsuhattth" path="res://scenes/meteorite.tscn" id="9_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dhjye6seei1yx" path="res://scenes/meteorite_2.tscn" id="10_kvpfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("5_gee14")
@@ -192,3 +194,4 @@ unique_name_in_owner = true
 [node name="MeteoriteSpawner" type="Node2D" parent="."]
 visible = false
 script = ExtResource("3_lnu2h")
+meteor_scenes = Array[PackedScene]([ExtResource("9_vtaks"), ExtResource("10_kvpfn")])
