@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Heal" load_steps=3 format=3 uid="uid://wntl18qs8gir"]
+
+[ext_resource type="Script" uid="uid://c04i7vvk8ukob" path="res://scripts/heal.gd" id="1_3st7f"]
+[ext_resource type="Texture2D" uid="uid://if3iysetgv6k" path="res://assets/loot/heal_kit.png" id="1_j18xr"]
+
+[resource]
+script = ExtResource("1_3st7f")
+price = 15
+name = "Аптечка"
+description = "классический большой предмет восстановления."
+icon = ExtResource("1_j18xr")
+metadata/_custom_type_script = "uid://c04i7vvk8ukob"

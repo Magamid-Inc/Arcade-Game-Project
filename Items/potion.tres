@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d356bjy2gekr6"]
+[gd_resource type="Resource" script_class="Heal" load_steps=3 format=3 uid="uid://dvxlgpslyd866"]
 
 [ext_resource type="Texture2D" uid="uid://dh15gt4efxk0h" path="res://assets/loot/potion.png" id="1_5vqjr"]
-[ext_resource type="Script" uid="uid://bxu6ph4em1v7a" path="res://scripts/item.gd" id="1_hw0jr"]
+[ext_resource type="Script" uid="uid://c04i7vvk8ukob" path="res://scripts/heal.gd" id="1_hw0jr"]
 
 [resource]
 script = ExtResource("1_hw0jr")
-name = "Хилка"
-description = "Мгновенно восстанавливает 20% здоровья"
+healSize = 3
+timeHeal = 5
+name = "Potion"
 max_stack_size = 4
 icon = ExtResource("1_5vqjr")
-metadata/_custom_type_script = "uid://bxu6ph4em1v7a"
+metadata/_custom_type_script = "uid://c04i7vvk8ukob"
