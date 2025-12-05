@@ -3,6 +3,10 @@ extends Node
 var slots : Array[InventorySlot]
 @onready var window : Panel = get_node("InventoryWindow")
 @onready var potion: Item = preload("res://Items/potion.tres")
+@onready var heal_kit: Item = preload("res://Items/heal_kit.tres")
+@onready var heart: Item = preload("res://Items/heart.tres")
+@onready var boost: Item = preload("res://Items/boost.tres")
+@onready var shield: Item = preload("res://Items/shield.tres")
 #@onready var info_text : Label = get_node("InventoryWindow/InfoText")
 @export var starter_items : Array[Item]
 
@@ -14,8 +18,8 @@ func _ready ():
 		child.set_item(null)
 		child.inventory = self
 		
-	for i in range(6):
-		starter_items.append(potion)
+	#for i in range(6):
+		#starter_items.append(potion)
 		
 	for item in starter_items:
 		add_item(item)
@@ -36,16 +40,21 @@ func _process(_delta: float) -> void:
 	#pass
 
 
-func add_item (item : Item):
+func add_item (item):
+	if item is not Item:
+		return Error.ERR_INVALID_DATA
+	
 	var slot = get_slot_to_add(item)
-  
+	
 	if slot == null:
-		return
+		return false
 	
 	if slot.item == null:
 		slot.set_item(item)
 	elif slot.item == item:
 		slot.add_item()
+	
+	return true
 
 #func get_item_from_num_slot(num: int) -> Item:
 	#return slots[num-1].item
@@ -60,7 +69,24 @@ func remove_item (index: int = -1, item : Item = null):
 	if slot == null or slot.item == null:
 		print("error")
 		return
+	
+	match slot.item:
+		potion:
+			print(potion.timeHeal)
+			GameState.player_health = clamp(GameState.player_health+potion.healSize, 0, GameState.max_health)
+			#for i in range(potion.timeHeal):
+				
+		heal_kit:
+			GameState.player_health = clamp(GameState.player_health+heal_kit.healSize, 0, GameState.max_health)
+		heart:
+			GameState.player_health = clamp(GameState.player_health+heart.healSize, 0, GameState.max_health)
+		boost:
+			pass
+		shield:
+			pass
+	
 	slot.remove_item()
+		
 
 
 func get_slot_to_add (item : Item) -> InventorySlot:
