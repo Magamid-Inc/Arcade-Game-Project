@@ -1,5 +1,5 @@
 
-[gd_scene load_steps=24 format=4 uid="uid://cg54nfilba6ij"]
+[gd_scene load_steps=22 format=4 uid="uid://cg54nfilba6ij"]
 
 
 [ext_resource type="PackedScene" uid="uid://dg6tbf8uavjqm" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -16,8 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://dtsa457nrj0fl" path="res://assets/interface/bar 100 hp.png" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://ci384mq3mltxg" path="res://scripts/player_money_ui.gd" id="13_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bktu7s67tl8eo" path="res://assets/loot/coin.png" id="13_trtic"]
-[ext_resource type="PackedScene" uid="uid://dp24jsuhattth" path="res://scenes/meteorite.tscn" id="9_vtaks"]
-[ext_resource type="PackedScene" uid="uid://dhjye6seei1yx" path="res://scenes/meteorite_2.tscn" id="10_kvpfn"]
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
@@ -305,5 +303,3 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 18
 text = "000"
-
-meteor_scenes = Array[PackedScene]([ExtResource("9_vtaks"), ExtResource("10_kvpfn")])
