@@ -1,17 +1,16 @@
 extends Node2D
 
-@export var meteor_scenes: Array[PackedScene]
+const METEOR_SCENE: PackedScene = preload("res://scenes/meteorite.tscn")
 
 @export var min_delay: float = 0.2
-@export var max_delay: float = 0.8
+@export var max_delay: float = 0.4
 
 @export var min_speed: float = 250.0
 @export var max_speed: float = 450.0
 
 @export var spawn_offset: float = 64.0
 
-@onready var player: Node2D = get_node("../Player")
-
+@onready var player: Node2D = %Player
 
 func _ready() -> void:
 	randomize()
@@ -24,79 +23,64 @@ func _schedule_next() -> void:
 
 
 func _spawn_meteor() -> void:
-	if meteor_scenes.is_empty():
-		push_error("В инспекторе не добавлены сцены метеоритов!")
-		return
-
 	var camera: Camera2D = get_viewport().get_camera_2d()
 	if camera == null:
-		push_error("Не найдена активная Camera2D!")
+		_schedule_next()
 		return
 
-	# ---- 1. Выбираем случайный метеорит ----
-	var scene: PackedScene = meteor_scenes[randi() % meteor_scenes.size()]
-	var meteor: Node2D = scene.instantiate() as Node2D
+	var meteor: Node2D = METEOR_SCENE.instantiate() as Node2D
 	get_tree().current_scene.add_child(meteor)
 
-	# ---- 2. Позиция спавна ----
-	var viewport: Rect2 = get_viewport().get_visible_rect()
-	var half_size: Vector2 = viewport.size * 0.5
+	# ---- Границы видимой области камеры ----
+	var viewport_rect: Rect2 = get_viewport().get_visible_rect()
+	var half_size: Vector2 = viewport_rect.size * 0.5
 	var cam_pos: Vector2 = camera.global_position
+
+	# ---- Случайная сторона экрана ----
+	var side: int = randi() % 4
 	var spawn_pos: Vector2 = cam_pos
 
-	var side: int = randi() % 4
 	match side:
-		0:
-			spawn_pos = Vector2(
-				randf_range(cam_pos.x - half_size.x, cam_pos.x + half_size.x),
-				cam_pos.y - half_size.y - spawn_offset
-			)
-		1:
-			spawn_pos = Vector2(
-				randf_range(cam_pos.x - half_size.x, cam_pos.x + half_size.x),
-				cam_pos.y + half_size.y + spawn_offset
-			)
-		2:
-			spawn_pos = Vector2(
-				cam_pos.x - half_size.x - spawn_offset,
-				randf_range(cam_pos.y - half_size.y, cam_pos.y + half_size.y)
-			)
-		3:
-			spawn_pos = Vector2(
-				cam_pos.x + half_size.x + spawn_offset,
-				randf_range(cam_pos.y - half_size.y, cam_pos.y + half_size.y)
-			)
+		0: # сверху
+			spawn_pos.x = randf_range(cam_pos.x - half_size.x, cam_pos.x + half_size.x)
+			spawn_pos.y = cam_pos.y - half_size.y - spawn_offset
+		1: # снизу
+			spawn_pos.x = randf_range(cam_pos.x - half_size.x, cam_pos.x + half_size.x)
+			spawn_pos.y = cam_pos.y + half_size.y + spawn_offset
+		2: # слева
+			spawn_pos.x = cam_pos.x - half_size.x - spawn_offset
+			spawn_pos.y = randf_range(cam_pos.y - half_size.y, cam_pos.y + half_size.y)
+		3: # справа
+			spawn_pos.x = cam_pos.x + half_size.x + spawn_offset
+			spawn_pos.y = randf_range(cam_pos.y - half_size.y, cam_pos.y + half_size.y)
 
 	meteor.global_position = spawn_pos
 
-	# ---- 3. Выбор направления ----
-	var pattern: float = randf()
+	# ---- Направление "то рандомно, то нет" ----
 	var dir: Vector2
-	var target: Vector2 = (player.global_position if player != null else cam_pos)
+	var pattern_choice: float = randf()
 
-	if pattern < 0.35:
-		dir = (target - spawn_pos).normalized()
+	var target_point: Vector2 = cam_pos
+	if player != null:
+		target_point = player.global_position
 
-	elif pattern < 0.75:
+	if pattern_choice < 0.35:
+		# 35% — прицельно в игрока
+		dir = (target_point - spawn_pos).normalized()
+	elif pattern_choice < 0.75:
+		# 40% — полурандомно: между игроком и случайной точкой в экране
 		var random_point: Vector2 = Vector2(
 			randf_range(cam_pos.x - half_size.x, cam_pos.x + half_size.x),
 			randf_range(cam_pos.y - half_size.y, cam_pos.y + half_size.y)
 		)
-		var mixed: Vector2 = lerp(random_point, target, 0.4)
-		dir = (mixed - spawn_pos).normalized()
-
+		var mixed_target: Vector2 = lerp(random_point, target_point, 0.4)
+		dir = (mixed_target - spawn_pos).normalized()
 	else:
-		dir = (cam_pos - spawn_pos).normalized()
+		# 25% — просто летят к центру камеры
+		var center_target: Vector2 = cam_pos
+		dir = (center_target - spawn_pos).normalized()
 
 	var speed: float = randf_range(min_speed, max_speed)
-	meteor.set("velocity", dir * speed)
-
-	# ---- 4. Урон из metadata ----
-	if meteor.has_meta("Damage"):
-		var dmg: int = int(meteor.get_meta("Damage"))
-		var dmg_zone: Area2D = meteor.get_node("DamageZone") as Area2D
-		dmg_zone.set("damage", dmg)
-	else:
-		push_warning("У метеорита нет metadata 'Damage'!")
+	meteor.velocity = dir * speed
 
 	_schedule_next()
