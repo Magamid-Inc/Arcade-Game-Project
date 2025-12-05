@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhjye6seei1yx"]
+
+[ext_resource type="Script" uid="uid://cxs74gq3k6qls" path="res://scripts/meteorite.gd" id="1_aqqgq"]
+[ext_resource type="Texture2D" uid="uid://bg7dfqssx2c2k" path="res://assets/meteorite2.png" id="2_lx6cf"]
+[ext_resource type="PackedScene" uid="uid://d4fdrlkr0jyps" path="res://scenes/damage_zone.tscn" id="3_twe31"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdrwk"]
+radius = 9.055386
+
+[node name="Meteorite" type="Node2D"]
+script = ExtResource("1_aqqgq")
+metadata/Damage = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.0000005, -1.9999995)
+scale = Vector2(0.3671875, 0.3671875)
+texture = ExtResource("2_lx6cf")
+
+[node name="DamageZone" parent="." instance=ExtResource("3_twe31")]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("CircleShape2D_cdrwk")
