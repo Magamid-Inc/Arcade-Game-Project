@@ -7,7 +7,6 @@
 script = ExtResource("1_3st7f")
 price = 15
 name = "Аптечка"
-description = "классический большой предмет восстановления. Лечение: +25 HP"
-max_stack_size = 4
+description = "классический большой предмет восстановления."
 icon = ExtResource("1_j18xr")
 metadata/_custom_type_script = "uid://c04i7vvk8ukob"

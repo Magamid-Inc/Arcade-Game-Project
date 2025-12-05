@@ -7,6 +7,6 @@
 script = ExtResource("1_w81nf")
 healSize = 10
 name = "Сердечко"
-description = "символический предмет здоровья в духе классических аркад. Лечение: 10 HP"
+description = "символический предмет здоровья в духе классических аркад."
 icon = ExtResource("1_fho7m")
 metadata/_custom_type_script = "uid://c04i7vvk8ukob"

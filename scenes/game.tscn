@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cg54nfilba6ij"]
+[gd_scene load_steps=24 format=4 uid="uid://cg54nfilba6ij"]
 
 [ext_resource type="PackedScene" uid="uid://dg6tbf8uavjqm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bs11g523nrrfd" path="res://scripts/player_health_ui.gd" id="2_lnu2h"]
@@ -7,13 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://uxadml48tp25" path="res://assets/locationDesign/decoration.png" id="5_gee14"]
 [ext_resource type="Texture2D" uid="uid://cj6xrd7rqs2ia" path="res://assets/locationDesign/floor.png" id="6_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bpjkisxi0nyvl" path="res://assets/locationDesign/wall main.png" id="7_vtaks"]
-[ext_resource type="Script" uid="uid://cs7k6fxsjuovk" path="res://scripts/camera_follow.gd" id="8_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://0virl05qr8xg" path="res://assets/locationDesign/wall.png" id="8_kvpfn"]
 [ext_resource type="Script" uid="uid://b8nykpkq7cwwe" path="res://scripts/inventory.gd" id="10_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://du2fxar8rad4s" path="res://scenes/inventory_slot.tscn" id="11_dinhu"]
 [ext_resource type="Texture2D" uid="uid://dtsa457nrj0fl" path="res://assets/interface/bar 100 hp.png" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://ci384mq3mltxg" path="res://scripts/player_money_ui.gd" id="13_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bktu7s67tl8eo" path="res://assets/loot/coin.png" id="13_trtic"]
+[ext_resource type="PackedScene" uid="uid://dp24jsuhattth" path="res://scenes/meteorite.tscn" id="9_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dhjye6seei1yx" path="res://scenes/meteorite_2.tscn" id="10_kvpfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("5_gee14")
@@ -113,7 +114,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_ca42v"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 12
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_dinhu")
 sources/1 = SubResource("TileSetAtlasSource_kvuet")
 sources/2 = SubResource("TileSetAtlasSource_trtic")
@@ -123,19 +124,12 @@ sources/3 = SubResource("TileSetAtlasSource_ir15t")
 texture = ExtResource("5_0tnpc")
 separation = Vector2i(10, 0)
 texture_region_size = Vector2i(32, 32)
-0:0/next_alternative_id = 2
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.087502, -15.805267, 15.523033, -15.805267, 14.394081, 16.369743, -15.523033, 15.805267)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.087502, -15.805267, 15.523033, -15.805267, 14.394081, 16.369743, -15.523033, 15.805267)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.087502, -15.805267, 15.523033, -15.805267, 14.394081, 16.369743, -15.523033, 15.805267)
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.087502, -15.805267, 15.523033, -15.805267, 14.394081, 16.369743, -15.523033, 15.805267)
 5:0/0 = 0
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.087502, -15.805267, 15.523033, -15.805267, 14.394081, 16.369743, -15.523033, 15.805267)
 4:0/0 = 0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.087502, -15.805267, 15.523033, -15.805267, 14.394081, 16.369743, -15.523033, 15.805267)
 
 [sub_resource type="TileSet" id="TileSet_kvpfn"]
 tile_size = Vector2i(64, 64)
@@ -182,8 +176,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAAD/////AQAAAAAAAAD//wAAAQAAAAA
 tile_set = SubResource("TileSet_ca42v")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
-unique_name_in_owner = true
-tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAAD4//z/AAAEAAAAAAD4/wMAAAABAAAAAAAHAPz/AAACAAAAAAAHAAMAAAAFAAAAAAD8/wAAAAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAAD4//z/AAAEAAAAAAA=")
 tile_set = SubResource("TileSet_kvpfn")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_uwrxv")]
@@ -191,7 +184,6 @@ unique_name_in_owner = true
 position = Vector2(-30, 7)
 
 [node name="PlayerHealthUi" type="Label" parent="Player"]
-visible = false
 offset_left = -81.99999
 offset_top = 18.0
 offset_right = 74.00001
@@ -199,104 +191,12 @@ offset_bottom = 80.0
 theme_override_font_sizes/font_size = 31
 text = "10/10"
 horizontal_alignment = 1
+script = ExtResource("2_lnu2h")
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 4)
-script = ExtResource("8_0tnpc")
 
 [node name="MeteoriteSpawner" type="Node2D" parent="."]
 visible = false
 script = ExtResource("3_lnu2h")
-
-[node name="Interface" type="CanvasLayer" parent="."]
-
-[node name="Inventory" type="Node" parent="Interface"]
-script = ExtResource("10_kvpfn")
-
-[node name="InventoryWindow" type="Panel" parent="Interface/Inventory"]
-custom_minimum_size = Vector2(424, 112)
-offset_left = 477.0
-offset_top = 576.0
-offset_right = 901.0
-offset_bottom = 688.0
-scale = Vector2(0.60917246, 0.5724612)
-size_flags_vertical = 8
-
-[node name="SlotContainer" type="GridContainer" parent="Interface/Inventory/InventoryWindow"]
-custom_minimum_size = Vector2(408, 96)
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 416.0
-offset_bottom = 104.0
-theme_override_constants/h_separation = 8
-columns = 4
-
-[node name="InventorySlot" parent="Interface/Inventory/InventoryWindow/SlotContainer" instance=ExtResource("11_dinhu")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot2" parent="Interface/Inventory/InventoryWindow/SlotContainer" instance=ExtResource("11_dinhu")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot3" parent="Interface/Inventory/InventoryWindow/SlotContainer" instance=ExtResource("11_dinhu")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="Interface/Inventory/InventoryWindow/SlotContainer" instance=ExtResource("11_dinhu")]
-layout_mode = 2
-
-[node name="HealthBar" type="CanvasGroup" parent="Interface"]
-
-[node name="Bar100Hp" type="Sprite2D" parent="Interface/HealthBar"]
-position = Vector2(96.00001, 29)
-scale = Vector2(0.7299845, 0.7299846)
-texture = ExtResource("12_dinhu")
-
-[node name="Label" type="Label" parent="Interface/HealthBar"]
-offset_right = 192.0
-offset_bottom = 57.0
-theme_override_font_sizes/font_size = 30
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_lnu2h")
-
-[node name="Control" type="Control" parent="Interface"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 192.0
-offset_right = 256.0
-offset_bottom = 61.0
-scale = Vector2(0.99446845, 1.0316604)
-script = ExtResource("13_ir15t")
-
-[node name="Icon" type="TextureRect" parent="Interface/Control"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 14.077877
-offset_top = 11.631733
-offset_right = 78.07788
-offset_bottom = 75.63173
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("13_trtic")
-
-[node name="Count" type="Label" parent="Interface/Control"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -31.0
-offset_top = -26.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 18
-text = "000"
+meteor_scenes = Array[PackedScene]([ExtResource("9_vtaks"), ExtResource("10_kvpfn")])
