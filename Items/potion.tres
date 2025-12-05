@@ -7,8 +7,7 @@
 script = ExtResource("1_hw0jr")
 healSize = 3
 timeHeal = 5
-name = "Хилка"
-description = "небольшое зелёное зелье с сияющей жидкостью. Лечение: +3 HP/сек, длительность 5 секунд"
+name = "Potion"
 max_stack_size = 4
 icon = ExtResource("1_5vqjr")
 metadata/_custom_type_script = "uid://c04i7vvk8ukob"
