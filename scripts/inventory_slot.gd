@@ -1,6 +1,6 @@
 class_name InventorySlot
 extends Node
-var item
+var item : Item
 var quantity : int
 @onready var icon : TextureRect = get_node("Icon")
 @onready var quantity_text : Label = get_node("QuantityText")
