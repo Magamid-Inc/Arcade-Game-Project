@@ -75,9 +75,9 @@ func remove_item (index: int = -1, item : Item = null):
 	
 	match slot.item:
 		potion:
-			print(potion.timeHeal)
-			GameState.player_health = clamp(GameState.player_health+potion.healSize, 0, GameState.max_health)
-			#for i in range(potion.timeHeal):
+			for i in range(potion.timeHeal):
+				GameState.player_health = clamp(GameState.player_health+potion.healSize, 0, GameState.max_health)
+				await get_tree().create_timer(1.0).timeout
 				
 		heal_kit:
 			GameState.player_health = clamp(GameState.player_health+heal_kit.healSize, 0, GameState.max_health)
