@@ -34,7 +34,7 @@ func _physics_process(delta):
 			var tile_id = loot_tilemaplayer.get_cell_source_id(cell)
 			var atlas_coords: Vector2i = loot_tilemaplayer.get_cell_atlas_coords(cell)
 			
-			if tile_id == 0:
+			if tile_id == 0 and !check_die:
 				var check_adding = true
 				match atlas_coords:
 					Vector2i(0, 0):

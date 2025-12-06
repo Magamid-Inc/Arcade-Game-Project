@@ -67,8 +67,11 @@ func remove_item (index: int = -1, item : Item = null):
 		slot = slots[index]
 	
 	if slot == null or slot.item == null:
-		print("error")
+		print("can't get slot or item")
 		return
+	if GameState.player_health <= 0:
+		print("Can't use item, player was died")
+		return 
 	
 	match slot.item:
 		potion:

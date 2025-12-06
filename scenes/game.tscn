@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cg54nfilba6ij"]
+[gd_scene load_steps=26 format=4 uid="uid://cg54nfilba6ij"]
 
 [ext_resource type="PackedScene" uid="uid://dg6tbf8uavjqm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bs11g523nrrfd" path="res://scripts/player_health_ui.gd" id="2_lnu2h"]
@@ -13,9 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://dhjye6seei1yx" path="res://scenes/meteorite_2.tscn" id="10_kvpfn"]
 [ext_resource type="Script" uid="uid://b8nykpkq7cwwe" path="res://scripts/inventory.gd" id="11_ca42v"]
 [ext_resource type="PackedScene" uid="uid://du2fxar8rad4s" path="res://scenes/inventory_slot.tscn" id="11_dinhu"]
-[ext_resource type="Texture2D" uid="uid://dtsa457nrj0fl" path="res://assets/interface/bar 100 hp.png" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://ci384mq3mltxg" path="res://scripts/player_money_ui.gd" id="13_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bktu7s67tl8eo" path="res://assets/loot/coin.png" id="13_trtic"]
+[ext_resource type="Texture2D" uid="uid://bnkx40o50yucj" path="res://assets/interface/bg bar hp.png" id="14_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://bf4fmx75n6hfd" path="res://assets/interface/progress bar hp 2nd layer.png" id="16_264po"]
+[ext_resource type="Texture2D" uid="uid://bjaop7l8aqueu" path="res://assets/interface/progress bar hp.png" id="16_ssvqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("5_gee14")
@@ -254,11 +256,25 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HealthBar" type="CanvasGroup" parent="Interface"]
+script = ExtResource("2_lnu2h")
 
-[node name="Bar100Hp" type="Sprite2D" parent="Interface/HealthBar"]
-position = Vector2(96.00001, 29)
-scale = Vector2(0.7299845, 0.7299846)
-texture = ExtResource("12_dinhu")
+[node name="HealthProgressBarBack" type="TextureProgressBar" parent="Interface/HealthBar"]
+offset_right = 262.0
+offset_bottom = 79.0
+scale = Vector2(0.9949715, 0.908532)
+step = 0.1
+value = 100.0
+texture_under = ExtResource("14_ssvqc")
+texture_progress = ExtResource("16_264po")
+texture_progress_offset = Vector2(18, 12)
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="Interface/HealthBar"]
+offset_right = 262.0
+offset_bottom = 79.0
+scale = Vector2(0.9949715, 0.908532)
+value = 15.0
+texture_progress = ExtResource("16_ssvqc")
+texture_progress_offset = Vector2(18, 12)
 
 [node name="Label" type="Label" parent="Interface/HealthBar"]
 offset_right = 192.0
@@ -267,7 +283,6 @@ theme_override_font_sizes/font_size = 30
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("2_lnu2h")
 
 [node name="Control" type="Control" parent="Interface"]
 layout_mode = 3
