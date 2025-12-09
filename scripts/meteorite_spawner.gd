@@ -14,6 +14,8 @@ extends Node2D
 
 
 func _ready() -> void:
+	while ScreenFader.fade_instance != null:
+		await get_tree().create_timer(0.1).timeout
 	randomize()
 	_schedule_next()
 

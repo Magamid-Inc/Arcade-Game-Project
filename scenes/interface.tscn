@@ -1,0 +1,262 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfqyyw0haxij5"]
+
+[ext_resource type="Script" uid="uid://bs11g523nrrfd" path="res://scripts/player_health_ui.gd" id="3_32vrv"]
+[ext_resource type="Texture2D" uid="uid://bnkx40o50yucj" path="res://assets/interface/bg bar hp.png" id="4_ttflf"]
+[ext_resource type="Texture2D" uid="uid://bf4fmx75n6hfd" path="res://assets/interface/progress bar hp 2nd layer.png" id="5_prp0k"]
+[ext_resource type="Texture2D" uid="uid://bjaop7l8aqueu" path="res://assets/interface/progress bar hp.png" id="6_dtbhd"]
+[ext_resource type="Script" uid="uid://ci384mq3mltxg" path="res://scripts/player_money_ui.gd" id="7_mde6w"]
+[ext_resource type="Texture2D" uid="uid://bktu7s67tl8eo" path="res://assets/loot/coin.png" id="8_2noy1"]
+[ext_resource type="Script" uid="uid://cdar5ak2i2sq2" path="res://scripts/player_items_UI.gd" id="9_gq6l6"]
+[ext_resource type="Texture2D" uid="uid://dh15gt4efxk0h" path="res://assets/loot/potion.png" id="10_uaspw"]
+[ext_resource type="Texture2D" uid="uid://pkgttlvk4r0m" path="res://assets/loot/shield.png" id="11_jgt0t"]
+[ext_resource type="Texture2D" uid="uid://if3iysetgv6k" path="res://assets/loot/heal_kit.png" id="12_uixvr"]
+[ext_resource type="Texture2D" uid="uid://c0no2ehi1ykgu" path="res://assets/loot/heart.png" id="13_8qqos"]
+[ext_resource type="Texture2D" uid="uid://w4s5xmxet0mr" path="res://assets/loot/boost.png" id="14_4k6dw"]
+
+[node name="Interface" type="CanvasLayer"]
+
+[node name="HealthBar" type="CanvasGroup" parent="."]
+script = ExtResource("3_32vrv")
+
+[node name="HealthProgressBarBack" type="TextureProgressBar" parent="HealthBar"]
+offset_right = 262.0
+offset_bottom = 79.0
+scale = Vector2(0.9949715, 0.908532)
+step = 0.1
+value = 100.0
+texture_under = ExtResource("4_ttflf")
+texture_progress = ExtResource("5_prp0k")
+texture_progress_offset = Vector2(18, 12)
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="HealthBar"]
+offset_right = 262.0
+offset_bottom = 79.0
+scale = Vector2(0.9949715, 0.908532)
+value = 15.0
+texture_progress = ExtResource("6_dtbhd")
+texture_progress_offset = Vector2(18, 12)
+
+[node name="Label" type="Label" parent="HealthBar"]
+offset_right = 192.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1088.0
+offset_top = 1.0
+offset_right = 1152.0
+offset_bottom = 62.0
+scale = Vector2(0.99446845, 1.0316604)
+script = ExtResource("7_mde6w")
+
+[node name="Icon" type="TextureRect" parent="MoneyUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.077877
+offset_top = 11.631733
+offset_right = 78.07788
+offset_bottom = 75.63173
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_2noy1")
+
+[node name="Count" type="Label" parent="MoneyUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 18
+text = "000"
+
+[node name="ItemsUI" type="Node" parent="."]
+script = ExtResource("9_gq6l6")
+metadata/_custom_type_script = "uid://cdar5ak2i2sq2"
+
+[node name="PotionUI" type="Control" parent="ItemsUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 1.0
+offset_right = 256.0
+offset_bottom = 62.0
+scale = Vector2(0.99446845, 1.0316604)
+
+[node name="Icon" type="TextureRect" parent="ItemsUI/PotionUI"]
+layout_mode = 0
+offset_left = 14.077877
+offset_top = 11.631733
+offset_right = 78.07788
+offset_bottom = 75.63173
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_uaspw")
+
+[node name="Count" type="Label" parent="ItemsUI/PotionUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 18
+text = "000"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ShieldUI" type="Control" parent="ItemsUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 1.0
+offset_right = 320.0
+offset_bottom = 62.0
+scale = Vector2(0.99446845, 1.0316604)
+
+[node name="Icon" type="TextureRect" parent="ItemsUI/ShieldUI"]
+layout_mode = 0
+offset_left = 14.077877
+offset_top = 11.631733
+offset_right = 78.07788
+offset_bottom = 75.63173
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_jgt0t")
+
+[node name="Count" type="Label" parent="ItemsUI/ShieldUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 18
+text = "000"
+horizontal_alignment = 2
+
+[node name="HealKitUI" type="Control" parent="ItemsUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 1.0
+offset_right = 384.0
+offset_bottom = 62.0
+scale = Vector2(0.99446845, 1.0316604)
+
+[node name="Icon" type="TextureRect" parent="ItemsUI/HealKitUI"]
+layout_mode = 0
+offset_left = 14.077877
+offset_top = 11.631733
+offset_right = 78.07788
+offset_bottom = 75.63173
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_uixvr")
+
+[node name="Count" type="Label" parent="ItemsUI/HealKitUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 18
+text = "000"
+horizontal_alignment = 2
+
+[node name="HeartUI" type="Control" parent="ItemsUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 384.0
+offset_top = 1.0
+offset_right = 448.0
+offset_bottom = 62.0
+scale = Vector2(0.99446845, 1.0316604)
+
+[node name="Icon" type="TextureRect" parent="ItemsUI/HeartUI"]
+layout_mode = 0
+offset_left = 14.077877
+offset_top = 11.631733
+offset_right = 78.07788
+offset_bottom = 75.63173
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("13_8qqos")
+
+[node name="Count" type="Label" parent="ItemsUI/HeartUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 18
+text = "000"
+horizontal_alignment = 2
+
+[node name="BoostUI" type="Control" parent="ItemsUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 448.0
+offset_top = 1.0
+offset_right = 512.0
+offset_bottom = 62.0
+scale = Vector2(0.99446845, 1.0316604)
+
+[node name="Icon" type="TextureRect" parent="ItemsUI/BoostUI"]
+layout_mode = 0
+offset_left = 14.077877
+offset_top = 11.631733
+offset_right = 78.07788
+offset_bottom = 75.63173
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("14_4k6dw")
+
+[node name="Count" type="Label" parent="ItemsUI/BoostUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 18
+text = "000"
+horizontal_alignment = 2

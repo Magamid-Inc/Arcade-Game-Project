@@ -1,25 +1,12 @@
 class_name Inventory
 extends Node
-var slots : Array[InventorySlot]
-@onready var window : Panel = get_node("InventoryWindow")
-@onready var potion: Item = preload("res://Items/potion.tres")
-@onready var heal_kit: Item = preload("res://Items/heal_kit.tres")
-@onready var heart: Item = preload("res://Items/heart.tres")
-@onready var boost: Item = preload("res://Items/boost.tres")
-@onready var shield: Item = preload("res://Items/shield.tres")
-#@onready var info_text : Label = get_node("InventoryWindow/InfoText")
+
 @export var starter_items : Array[Item]
 
 
 func _ready ():
-	for child in get_node("InventoryWindow/SlotContainer").get_children():
-		
-		slots.append(child)
-		child.set_item(null)
-		child.inventory = self
-		
-	#for i in range(6):
-		#starter_items.append(potion)
+	for i in range(1):
+		starter_items.append(GameState.potion)
 		
 	for item in starter_items:
 		add_item(item)
@@ -27,97 +14,54 @@ func _ready ():
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("press_num_1"):
-		remove_item(0)
+		remove_item(GameState.potion)
 	if Input.is_action_just_pressed("press_num_2"):
-		remove_item(1)
+		remove_item(GameState.shield)
 	if Input.is_action_just_pressed("press_num_3"):
-		remove_item(2)
+		remove_item(GameState.heal_kit)
 	if Input.is_action_just_pressed("press_num_4"):
-		remove_item(3)
-
-
-#func on_give_player_item (item : Item, amount : int):
-	#pass
+		remove_item(GameState.heart)
+	if Input.is_action_just_pressed("press_num_5"):
+		remove_item(GameState.boost)
 
 
 func add_item (item):
 	if item is not Item:
 		return Error.ERR_INVALID_DATA
-	
-	var slot = get_slot_to_add(item)
-	
-	if slot == null:
-		return false
-	
-	if slot.item == null:
-		slot.set_item(item)
-	elif slot.item == item:
-		slot.add_item()
-	
+	print(item.identity)
+		
+	if item.identity == "":
+		print("Undefined item")
+		return
+		
+	if  GameState.itemscounts.get(item.identity) == null || item.max_stack_size <= GameState.itemscounts.get(item.identity):
+		print("Can't take item")
+		return
+		
+	GameState.itemscounts[item.identity] += 1
 	return true
 
-#func get_item_from_num_slot(num: int) -> Item:
-	#return slots[num-1].item
 
-func remove_item (index: int = -1, item : Item = null):
-	var slot : InventorySlot
-	if index == -1:
-		slot = get_slot_to_remove(item)
-	else:
-		slot = slots[index]
-	
-	if slot == null or slot.item == null:
-		print("can't get slot or item")
+func remove_item (item : Item = null):
+	if item == null || GameState.itemscounts.get(item.identity) <= 0:
+		print("can't get item")
 		return
 	if GameState.player_health <= 0:
 		print("Can't use item, player was died")
 		return 
-	
-	match slot.item:
-		potion:
-			for i in range(potion.timeHeal):
-				GameState.player_health = clamp(GameState.player_health+potion.healSize, 0, GameState.max_health)
-				await get_tree().create_timer(1.0).timeout
-				
-		heal_kit:
-			GameState.player_health = clamp(GameState.player_health+heal_kit.healSize, 0, GameState.max_health)
-		heart:
-			GameState.player_health = clamp(GameState.player_health+heart.healSize, 0, GameState.max_health)
-		boost:
-			pass
-		shield:
-			pass
-	
-	slot.remove_item()
 		
-
-
-func get_slot_to_add (item : Item) -> InventorySlot:
-	for slot in slots:
-		if slot.item == item and slot.quantity < item.max_stack_size:
-			return slot
-  
-	for slot in slots:
-		if slot.item == null:
-			return slot
-  
-	return null
-
-
-func get_slot_to_remove (item : Item) -> InventorySlot:
-	for slot in slots:
-		if slot.item == item:
-			print(slot)
-			return slot
-
-	return null
-
-
-func get_number_of_item (item : Item) -> int:
-	var total = 0
-
-	for slot in slots:
-		if slot.item == item:
-			total += slot.quantity
-
-	return total
+	GameState.itemscounts[item.identity] -= 1
+	
+	match item:
+		GameState.potion:
+			for i in range(item.timeHeal):
+				GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+				await get_tree().create_timer(1.0).timeout
+		GameState.heal_kit:
+			GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+		GameState.heart:
+			GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+		GameState.boost:
+			pass
+		GameState.shield:
+			pass

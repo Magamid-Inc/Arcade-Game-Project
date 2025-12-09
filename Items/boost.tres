@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Boost" load_steps=3 format=3 uid="uid://b28x222vq7br"]
 
-[ext_resource type="Script" uid="uid://l54u8cfm5imr" path="res://scripts/boost.gd" id="1_83yrh"]
+[ext_resource type="Script" uid="uid://l54u8cfm5imr" path="res://scripts/items/boost.gd" id="1_83yrh"]
 [ext_resource type="Texture2D" uid="uid://w4s5xmxet0mr" path="res://assets/loot/boost.png" id="1_kf2g3"]
 
 [resource]
@@ -9,4 +9,5 @@ name = "Ускорение"
 description = "Описание: энергетический стимулятор — капсула с оранжево-жёлтым свечением. Возможности:Увеличивает скорость передвижения игрока на +40%.Улучшает скорость уклонения и даёт более быстрое восстановление после рывка.Время действия: 5–7 секунд."
 max_stack_size = 4
 icon = ExtResource("1_kf2g3")
+identity = "boost"
 metadata/_custom_type_script = "uid://l54u8cfm5imr"

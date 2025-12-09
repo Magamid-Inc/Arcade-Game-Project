@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xh7sfaff46eq"
-path="res://.godot/imported/traps gap (10px).png-66a58a0a7aa67ce5047a1ff9f6e99827.ctex"
+uid="uid://c3i8t6q4xqlnd"
+path="res://.godot/imported/start_screen_bg.png-44eb60d475ca8ddd8908847c8f5ba698.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/traps/traps gap (10px).png"
-dest_files=["res://.godot/imported/traps gap (10px).png-66a58a0a7aa67ce5047a1ff9f6e99827.ctex"]
+source_file="res://assets/start_screne/start_screen_bg.png"
+dest_files=["res://.godot/imported/start_screen_bg.png-44eb60d475ca8ddd8908847c8f5ba698.ctex"]
 
 [params]
 

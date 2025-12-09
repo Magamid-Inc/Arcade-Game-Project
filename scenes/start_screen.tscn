@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://chmgsk387f8eu"]
+
+[ext_resource type="Texture2D" uid="uid://c3i8t6q4xqlnd" path="res://assets/start_screne/start_screen_bg.png" id="1_tx5wa"]
+[ext_resource type="Script" uid="uid://b0sg7x28qnklb" path="res://scripts/start_scene/buttons.gd" id="2_hm208"]
+[ext_resource type="Texture2D" uid="uid://be21lcylbqjxk" path="res://assets/start_screne/btn_start.png" id="2_o7i0r"]
+[ext_resource type="Texture2D" uid="uid://dbkneuu15hy3w" path="res://assets/start_screne/btn_exit.png" id="3_5pab1"]
+[ext_resource type="Texture2D" uid="uid://cenefsn2jxiev" path="res://assets/start_screne/btn_settings.png" id="4_o30b1"]
+
+[node name="StartScreen" type="Node2D"]
+
+[node name="StartScreenBg" type="Sprite2D" parent="."]
+position = Vector2(576.00006, 323.99994)
+scale = Vector2(0.59999996, 0.59999996)
+texture = ExtResource("1_tx5wa")
+
+[node name="Buttons" type="Node" parent="."]
+script = ExtResource("2_hm208")
+
+[node name="ExitButton" type="TextureButton" parent="Buttons"]
+offset_left = 288.0
+offset_top = 448.0
+offset_right = 583.0
+offset_bottom = 521.0
+texture_normal = ExtResource("3_5pab1")
+
+[node name="SettingsButton" type="TextureButton" parent="Buttons"]
+offset_left = 288.0
+offset_top = 360.0
+offset_right = 583.0
+offset_bottom = 433.0
+texture_normal = ExtResource("4_o30b1")
+
+[node name="StartGameButton" type="TextureButton" parent="Buttons"]
+offset_left = 288.0
+offset_top = 272.0
+offset_right = 583.0
+offset_bottom = 345.0
+texture_normal = ExtResource("2_o7i0r")
+
+[connection signal="pressed" from="Buttons/StartGameButton" to="Buttons" method="start_button_pressed"]

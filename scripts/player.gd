@@ -4,15 +4,15 @@ extends CharacterBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var check_die: bool = false
 @onready var loot_tilemaplayer = get_node("%TileMapLayer2")
-@onready var inventory: Inventory = $"../Interface/Inventory"
+@onready var inventory: Inventory = %Inventory
 
 const SPEED = 300
 
-#@warning_ignore("unused_parameter")
+
 func _physics_process(delta):
 	var direction = Vector2.ZERO
 	
-	if not check_die:
+	if not check_die && ScreenFader.fade_instance == null:
 		if Input.is_action_pressed("move_up"):
 			direction.y -= 1
 		if Input.is_action_pressed("move_down"):
@@ -21,9 +21,12 @@ func _physics_process(delta):
 			direction.x -= 1
 		if Input.is_action_pressed("move_right"):
 			direction.x += 1
+			
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 
 	velocity = direction.normalized() * SPEED
-	#move_and_slide()
+
 	var collision = move_and_collide(velocity * delta)
 	
 	if collision:
@@ -38,17 +41,17 @@ func _physics_process(delta):
 				var check_adding = true
 				match atlas_coords:
 					Vector2i(0, 0):
-						check_adding = inventory.add_item(inventory.potion)
+						check_adding = inventory.add_item(GameState.potion)
 					Vector2i(1, 0):
-						check_adding = inventory.add_item(inventory.shield)
+						check_adding = inventory.add_item(GameState.shield)
 					Vector2i(2, 0):
-						check_adding = inventory.add_item(inventory.heart)
+						check_adding = inventory.add_item(GameState.heart)
 					Vector2i(3, 0):
-						check_adding = inventory.add_item(inventory.heal_kit)
+						check_adding = inventory.add_item(GameState.heal_kit)
 					Vector2i(4, 0):
 						GameState.money += 1
 					Vector2i(5, 0):
-						check_adding = inventory.add_item(inventory.boost)
+						check_adding = inventory.add_item(GameState.boost)
 				if check_adding:
 					loot_tilemaplayer.erase_cell(cell)
 
@@ -68,12 +71,16 @@ func take_damage(amount: int):
 	GameState.player_health -= amount
 	GameState.player_health = clamp(GameState.player_health, 0, GameState.max_health)
 	
-	#print("Health: ", GameState.player_health)
-	
 	if GameState.player_health <= 0 and !check_die:
 		check_die = true
 		die()
-		
+
+
 func die():
 	print("Player died")
-	#$"../GameOverScreen".visible = true
+	await get_tree().create_timer(3).timeout
+	$"../GameOverScreen".visible = true
+
+
+func _body_entered_from_lobby_to_lvl(_body: Node2D) -> void:
+	await ScreenFader.transition_to_scene("res://scenes/game.tscn", 1.0)
