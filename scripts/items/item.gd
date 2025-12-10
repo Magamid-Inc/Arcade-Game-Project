@@ -6,3 +6,4 @@ extends  Resource
 @export var max_stack_size : int  = 1
 @export var icon : Texture
 @export var identity : String = ""
+@export var reload_time: float = 3.0

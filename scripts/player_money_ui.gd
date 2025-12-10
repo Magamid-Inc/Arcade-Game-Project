@@ -11,6 +11,6 @@ func _process(_delta: float) -> void:
 	
 func update_quantity_text ():
 	if quantity <= 1:
-		quantity_text.text = ""
+		quantity_text.text = "0"
 	else:
 		quantity_text.text = str(quantity)

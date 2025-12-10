@@ -11,8 +11,12 @@ const SPEED = 300
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
+	var is_terminal_open = false
+	var terminal = get_node_or_null("../Terminal")
+	if terminal != null:
+		is_terminal_open = terminal.visible
 	
-	if not check_die && ScreenFader.fade_instance == null:
+	if not check_die && ScreenFader.fade_instance == null && !is_terminal_open:
 		if Input.is_action_pressed("move_up"):
 			direction.y -= 1
 		if Input.is_action_pressed("move_down"):
@@ -37,7 +41,7 @@ func _physics_process(delta):
 			var tile_id = loot_tilemaplayer.get_cell_source_id(cell)
 			var atlas_coords: Vector2i = loot_tilemaplayer.get_cell_atlas_coords(cell)
 			
-			if tile_id == 0 and !check_die:
+			if tile_id == 0 and !check_die :
 				var check_adding = true
 				match atlas_coords:
 					Vector2i(0, 0):

@@ -28,7 +28,6 @@ func _process(_delta: float) -> void:
 func add_item (item):
 	if item is not Item:
 		return Error.ERR_INVALID_DATA
-	print(item.identity)
 		
 	if item.identity == "":
 		print("Undefined item")

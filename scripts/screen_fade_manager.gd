@@ -32,7 +32,7 @@ func transition_to_scene(scene_path: String, fade_duration: float = 0.3) -> void
 	await fade_out(fade_duration)
 	var timer = fade_instance.get_node("Label")
 	timer.visible = true
-	for t in range(1, 4):
+	for t in range(3, 0, -1):
 		timer.text = str(t)
 		await get_tree().create_timer(1).timeout
 	timer.visible = false

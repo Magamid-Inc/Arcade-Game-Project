@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcp1e2sn18y8l"]
+
+[ext_resource type="Texture2D" uid="uid://dh15gt4efxk0h" path="res://assets/loot/potion.png" id="1_ga5g8"]
+[ext_resource type="Script" uid="uid://5dbvofclgdlx" path="res://scripts/item_buy_cart.gd" id="1_je7ln"]
+[ext_resource type="Texture2D" uid="uid://bd6pf7gkkagln" path="res://assets/btn_buy.png" id="2_je7ln"]
+[ext_resource type="Texture2D" uid="uid://bktu7s67tl8eo" path="res://assets/loot/coin.png" id="3_q0qdr"]
+
+[node name="ItemBuyCart" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 98.0
+offset_bottom = 159.0
+mouse_filter = 2
+script = ExtResource("1_je7ln")
+
+[node name="ItemTextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(67, 67)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 82.0
+offset_bottom = 79.0
+texture = ExtResource("1_ga5g8")
+
+[node name="BuyTextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 122.0
+offset_right = 91.0
+offset_bottom = 147.0
+texture_normal = ExtResource("2_je7ln")
+
+[node name="CoinTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 27.00003
+offset_top = 95.0
+offset_right = 91.00003
+offset_bottom = 159.0
+scale = Vector2(0.281, 0.281)
+texture = ExtResource("3_q0qdr")
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 92.0
+offset_right = 81.0
+offset_bottom = 122.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.99215686, 0.654902, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "30"
+
+[connection signal="pressed" from="BuyTextureButton" to="." method="_press_buy"]
