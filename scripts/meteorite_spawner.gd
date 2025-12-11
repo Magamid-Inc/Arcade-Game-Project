@@ -3,7 +3,7 @@ extends Node2D
 @export var meteor_scenes: Array[PackedScene]
 
 @export var min_delay: float = 0.2
-@export var max_delay: float = 0.8
+@export var max_delay: float = 0.4
 
 @export var min_speed: float = 250.0
 @export var max_speed: float = 450.0
