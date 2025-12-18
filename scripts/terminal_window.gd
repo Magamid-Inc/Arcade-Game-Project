@@ -15,7 +15,7 @@ func _ready() -> void:
 	item_cart1.set_item(GameState.shield)
 	item_cart2.set_item(GameState.boost)
 	item_cart3.set_item(GameState.potion)
-	item_cart4.set_item(GameState.heal_kit)
+	item_cart4.set_item(GameState.medkit)
 	item_cart5.set_item(GameState.heart)
 
 

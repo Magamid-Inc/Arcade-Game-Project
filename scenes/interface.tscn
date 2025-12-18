@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cdar5ak2i2sq2" path="res://scripts/player_items_UI.gd" id="9_gq6l6"]
 [ext_resource type="Texture2D" uid="uid://dh15gt4efxk0h" path="res://assets/loot/potion.png" id="10_uaspw"]
 [ext_resource type="Texture2D" uid="uid://pkgttlvk4r0m" path="res://assets/loot/shield.png" id="11_jgt0t"]
-[ext_resource type="Texture2D" uid="uid://if3iysetgv6k" path="res://assets/loot/heal_kit.png" id="12_uixvr"]
+[ext_resource type="Texture2D" uid="uid://if3iysetgv6k" path="res://assets/loot/medkit.png" id="12_uixvr"]
 [ext_resource type="Texture2D" uid="uid://c0no2ehi1ykgu" path="res://assets/loot/heart.png" id="13_8qqos"]
 [ext_resource type="Texture2D" uid="uid://w4s5xmxet0mr" path="res://assets/loot/boost.png" id="14_4k6dw"]
 

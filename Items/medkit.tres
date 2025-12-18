@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Heal" load_steps=3 format=3 uid="uid://wntl18qs8gir"]
 
-[ext_resource type="Script" uid="uid://c04i7vvk8ukob" path="res://scripts/items/heal.gd" id="1_3st7f"]
-[ext_resource type="Texture2D" uid="uid://if3iysetgv6k" path="res://assets/loot/heal_kit.png" id="1_j18xr"]
+[ext_resource type="Texture2D" uid="uid://if3iysetgv6k" path="res://assets/loot/medkit.png" id="1_vk30r"]
+[ext_resource type="Script" uid="uid://c04i7vvk8ukob" path="res://scripts/items/heal.gd" id="2_r78et"]
 
 [resource]
-script = ExtResource("1_3st7f")
+script = ExtResource("2_r78et")
 price = 15
 name = "Аптечка"
 description = "классический большой предмет восстановления. Лечение: +25 HP"
 max_stack_size = 4
-icon = ExtResource("1_j18xr")
-identity = "heal_kit"
+icon = ExtResource("1_vk30r")
+identity = "medkit"
 metadata/_custom_type_script = "uid://c04i7vvk8ukob"

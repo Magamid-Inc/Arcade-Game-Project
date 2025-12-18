@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cem16kjwnwp"]
+
+[ext_resource type="Texture2D" uid="uid://w4s5xmxet0mr" path="res://assets/loot/boost.png" id="1_8xfal"]
+[ext_resource type="Script" uid="uid://ca5r50cdlg50w" path="res://scripts/PickupItem.gd" id="1_s34y7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i64fm"]
+radius = 16.03122
+
+[node name="Boost" type="Area2D" groups=["item"]]
+collision_layer = 2
+script = ExtResource("1_s34y7")
+item_key = &"boost"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8xfal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i64fm")

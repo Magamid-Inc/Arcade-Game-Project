@@ -37,7 +37,7 @@ func _spawn_meteor() -> void:
 
 	# ---- 1. Выбираем случайный метеорит ----
 	var scene: PackedScene = meteor_scenes[randi() % meteor_scenes.size()]
-	var meteor: Node2D = scene.instantiate() as Node2D
+	var meteor := scene.instantiate()
 	get_tree().current_scene.add_child(meteor)
 
 	# ---- 2. Позиция спавна ----

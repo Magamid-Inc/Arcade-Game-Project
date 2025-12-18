@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("press_num_2"):
 		remove_item(GameState.shield)
 	if Input.is_action_just_pressed("press_num_3"):
-		remove_item(GameState.heal_kit)
+		remove_item(GameState.medkit)
 	if Input.is_action_just_pressed("press_num_4"):
 		remove_item(GameState.heart)
 	if Input.is_action_just_pressed("press_num_5"):
@@ -56,7 +56,7 @@ func remove_item (item : Item = null):
 			for i in range(item.timeHeal):
 				GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
 				await get_tree().create_timer(1.0).timeout
-		GameState.heal_kit:
+		GameState.medkit:
 			GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
 		GameState.heart:
 			GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
