@@ -2,21 +2,46 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var check_die: bool = false
-@onready var loot_tilemaplayer = get_node("%TileMapLayer2")
+@onready var pickup_area: Area2D = $PickupArea
 @onready var inventory: Inventory = %Inventory
 
-const SPEED = 300
+# -----------------------------
+# СОСТОЯНИЕ
+# -----------------------------
+var check_die: bool = false
+
+# -----------------------------
+# ДВИЖЕНИЕ
+# -----------------------------
+const SPEED: float = 300.0
+
+# -----------------------------
+# ЭФФЕКТ ПОЛУЧЕНИЯ УРОНА
+# -----------------------------
+@export var hit_flash_color: Color = Color(1, 0.3, 0.3, 1)
+@export var hit_flash_duration: float = 0.15
+
+var hit_flash_timer: float = 0.0
+var is_flashing: bool = false
 
 
-func _physics_process(delta):
-	var direction = Vector2.ZERO
-	var is_terminal_open = false
-	var terminal = get_node_or_null("../Terminal")
+func _ready() -> void:
+	pickup_area.area_entered.connect(_on_pickup_area_area_entered)
+	animated_sprite.modulate = Color.WHITE
+
+
+func _physics_process(delta: float) -> void:
+	var direction := Vector2.ZERO
+	var is_terminal_open := false
+
+	var terminal := get_node_or_null("../Terminal")
 	if terminal != null:
 		is_terminal_open = terminal.visible
-	
-	if not check_die && ScreenFader.fade_instance == null && !is_terminal_open:
+
+	# -----------------------------
+	# ВВОД ДВИЖЕНИЯ
+	# -----------------------------
+	if not check_die and ScreenFader.fade_instance == null and not is_terminal_open:
 		if Input.is_action_pressed("move_up"):
 			direction.y -= 1
 		if Input.is_action_pressed("move_down"):
@@ -25,66 +50,103 @@ func _physics_process(delta):
 			direction.x -= 1
 		if Input.is_action_pressed("move_right"):
 			direction.x += 1
-			
+
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
 	velocity = direction.normalized() * SPEED
+	move_and_slide()
 
-	var collision = move_and_collide(velocity * delta)
-	
-	if collision:
-		var collider = collision.get_collider()
-		if collider is TileMapLayer:
-			var collision_pos = collision.get_position()
-			var cell = loot_tilemaplayer.local_to_map(collision_pos - collision.get_normal())
-			var tile_id = loot_tilemaplayer.get_cell_source_id(cell)
-			var atlas_coords: Vector2i = loot_tilemaplayer.get_cell_atlas_coords(cell)
-			
-			if tile_id == 0 and !check_die :
-				var check_adding = true
-				match atlas_coords:
-					Vector2i(0, 0):
-						check_adding = inventory.add_item(GameState.potion)
-					Vector2i(1, 0):
-						check_adding = inventory.add_item(GameState.shield)
-					Vector2i(2, 0):
-						check_adding = inventory.add_item(GameState.heart)
-					Vector2i(3, 0):
-						check_adding = inventory.add_item(GameState.heal_kit)
-					Vector2i(4, 0):
-						GameState.money += 1
-					Vector2i(5, 0):
-						check_adding = inventory.add_item(GameState.boost)
-				if check_adding:
-					loot_tilemaplayer.erase_cell(cell)
-
+	# -----------------------------
+	# РАЗВОРОТ
+	# -----------------------------
 	if direction.x != 0:
 		animated_sprite.flip_h = direction.x < 0
-	
-	# Animations
-	if direction.x == 0 and direction.y == 0 and !check_die:
-		animated_sprite.play("idle")
-	elif !check_die:
-		animated_sprite.play("run")
-	if check_die and !collision_shape.disabled:
-		collision_shape.disabled = true
-		animated_sprite.play("die")
 
-func take_damage(amount: int):
+	# -----------------------------
+	# АНИМАЦИИ
+	# -----------------------------
+	if check_die:
+		return
+
+	if direction == Vector2.ZERO:
+		animated_sprite.play("idle")
+	else:
+		animated_sprite.play("run")
+
+
+func _process(delta: float) -> void:
+	# -----------------------------
+	# ПЛАВНЫЙ ВОЗВРАТ ЦВЕТА
+	# -----------------------------
+	if is_flashing:
+		hit_flash_timer -= delta
+		if hit_flash_timer <= 0.0:
+			is_flashing = false
+			animated_sprite.modulate = Color.WHITE
+
+
+# --------------------------------------------------
+# ПОДБОР ПРЕДМЕТОВ
+# --------------------------------------------------
+
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	if check_die:
+		return
+
+	if area.is_in_group("coin"):
+		GameState.money += 1
+		area.queue_free()
+		return
+
+	if area.is_in_group("item"):
+		if area.has_method("get_item_data"):
+			var item = area.get_item_data()
+			if inventory.add_item(item):
+				area.queue_free()
+
+
+# --------------------------------------------------
+# УРОН И СМЕРТЬ
+# --------------------------------------------------
+
+func take_damage(amount: int) -> void:
+	if check_die:
+		return
+
+	# 🔴 ВИЗУАЛЬНЫЙ ФИДБЕК
+	flash_on_hit()
+
 	GameState.player_health -= amount
 	GameState.player_health = clamp(GameState.player_health, 0, GameState.max_health)
-	
-	if GameState.player_health <= 0 and !check_die:
+
+	if GameState.player_health <= 0:
 		check_die = true
 		die()
 
 
-func die():
-	print("Player died")
-	await get_tree().create_timer(3).timeout
+func flash_on_hit() -> void:
+	is_flashing = true
+	hit_flash_timer = hit_flash_duration
+	animated_sprite.modulate = hit_flash_color
+
+
+func die() -> void:
+	# защита от повторного запуска
+	if animated_sprite.animation == "die":
+		return
+
+	collision_shape.disabled = true
+	animated_sprite.modulate = Color.WHITE
+	animated_sprite.play("die")
+
+	await get_tree().create_timer(3.0).timeout
 	$"../GameOverScreen".visible = true
 
 
+# --------------------------------------------------
+# ПЕРЕХОД ИЗ ЛОББИ
+# --------------------------------------------------
+
 func _body_entered_from_lobby_to_lvl(_body: Node2D) -> void:
-	await ScreenFader.transition_to_scene("res://scenes/game.tscn", 1.0)
+	await ScreenFader.transition_to_scene("res://scenes/level1.tscn", 1.0)
