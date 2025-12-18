@@ -30,7 +30,7 @@ func _ready() -> void:
 	animated_sprite.modulate = Color.WHITE
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction := Vector2.ZERO
 	var is_terminal_open := false
 
@@ -135,8 +135,8 @@ func die() -> void:
 	# защита от повторного запуска
 	if animated_sprite.animation == "die":
 		return
-
-	collision_shape.disabled = true
+#	#ошбику даёт
+	#collision_shape.disabled = true
 	animated_sprite.modulate = Color.WHITE
 	animated_sprite.play("die")
 

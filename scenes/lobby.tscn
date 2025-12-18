@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpjkisxi0nyvl" path="res://assets/locationDesign/wall main.png" id="3_ncsg4"]
 [ext_resource type="PackedScene" uid="uid://cfqyyw0haxij5" path="res://scenes/interface.tscn" id="3_nqcc7"]
 [ext_resource type="Script" uid="uid://cs7k6fxsjuovk" path="res://scripts/camera_follow.gd" id="4_apkv3"]
-[ext_resource type="Script" uid="uid://b8nykpkq7cwwe" path="res://scripts/Inventory.gd" id="4_pc087"]
+[ext_resource type="Script" uid="uid://b8nykpkq7cwwe" path="res://scripts/inventory.gd" id="4_pc087"]
 [ext_resource type="Script" uid="uid://dihdbhftx6il3" path="res://scripts/terminal_window.gd" id="7_yad6j"]
 [ext_resource type="Texture2D" uid="uid://d04mxcdie4n04" path="res://assets/locationDesign/Terminal_bg.png" id="9_07nfq"]
 [ext_resource type="PackedScene" uid="uid://dcp1e2sn18y8l" path="res://scenes/item_buy_cart.tscn" id="10_oipnb"]

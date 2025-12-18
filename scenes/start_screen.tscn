@@ -37,4 +37,6 @@ offset_right = 583.0
 offset_bottom = 345.0
 texture_normal = ExtResource("2_o7i0r")
 
+[connection signal="pressed" from="Buttons/ExitButton" to="Buttons" method="exit_button_pressed"]
+[connection signal="pressed" from="Buttons/SettingsButton" to="Buttons" method="settings_button_pressed"]
 [connection signal="pressed" from="Buttons/StartGameButton" to="Buttons" method="start_button_pressed"]
