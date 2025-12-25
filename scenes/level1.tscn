@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dslcf5dmry4q0"]
+[gd_scene load_steps=28 format=4 uid="uid://dslcf5dmry4q0"]
 
 [ext_resource type="Texture2D" uid="uid://uxadml48tp25" path="res://assets/locationDesign/decoration.png" id="1_f31uk"]
 [ext_resource type="Texture2D" uid="uid://cj6xrd7rqs2ia" path="res://assets/locationDesign/floor.png" id="2_gnai3"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://d3sw85pqceh74" path="res://scenes/heart.tscn" id="19_ai3nx"]
 [ext_resource type="PackedScene" uid="uid://ddns03rptycjl" path="res://scenes/potion.tscn" id="20_phfsf"]
 [ext_resource type="PackedScene" uid="uid://bcf6a284jbj3y" path="res://scenes/shield.tscn" id="21_3oqy1"]
+[ext_resource type="Script" uid="uid://cy3urkeeudplg" path="res://scripts/hazard_spawner.gd" id="21_u068y"]
+[ext_resource type="PackedScene" uid="uid://djumijokxy4r1" path="res://scenes/spike.tscn" id="22_1ooyw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("1_f31uk")
@@ -210,3 +212,9 @@ script = ExtResource("16_dxn3v")
 item_scenes = Array[PackedScene]([ExtResource("17_u068y"), ExtResource("18_1ooyw"), ExtResource("19_ai3nx"), ExtResource("20_phfsf"), ExtResource("21_3oqy1")])
 min_items = 5
 max_items = 10
+
+[node name="HazardSpawner" type="Node2D" parent="."]
+script = ExtResource("21_u068y")
+spike_scene = ExtResource("22_1ooyw")
+min_spikes = 20
+max_spikes = 30

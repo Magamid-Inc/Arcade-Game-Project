@@ -29,8 +29,9 @@ func spawn_items() -> void:
 			var scene: PackedScene = item_scenes.pick_random()
 			var item: Area2D = scene.instantiate() as Area2D
 			item.global_position = tilemap.map_to_local(cell)
-
 			get_tree().current_scene.add_child.call_deferred(item)
+			
+			GameState.occupied_cells.append(cell)
 			spawned = true
 
 

@@ -17,6 +17,8 @@ var timeout_heal = false
 var timeout_boost = false
 var timeout_shield = false
 
+var occupied_cells: Array[Vector2i] = []
+
 func _ready():
 	itemscounts = {
 		"potion": 0,
@@ -25,3 +27,4 @@ func _ready():
 		"heart": 0,
 		"boost": 0
 	}
+	occupied_cells.clear()
