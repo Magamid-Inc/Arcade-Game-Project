@@ -2,8 +2,11 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var shield_effect: Polygon2D = $shield_effect
 @onready var pickup_area: Area2D = $PickupArea
+@onready var pickup_collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var inventory: Inventory = %Inventory
+
 
 # -----------------------------
 # СОСТОЯНИЕ
@@ -13,7 +16,7 @@ var check_die: bool = false
 # -----------------------------
 # ДВИЖЕНИЕ
 # -----------------------------
-const SPEED: float = 300.0
+
 
 # -----------------------------
 # ЭФФЕКТ ПОЛУЧЕНИЯ УРОНА
@@ -54,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-	velocity = direction.normalized() * SPEED
+	velocity = direction.normalized() * GameState.SPEED
 	move_and_slide()
 
 	# -----------------------------
@@ -111,7 +114,7 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 # --------------------------------------------------
 
 func take_damage(amount: int) -> void:
-	if check_die:
+	if check_die or GameState.timeout_shield:
 		return
 
 	# 🔴 ВИЗУАЛЬНЫЙ ФИДБЕК

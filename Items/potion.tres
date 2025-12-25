@@ -7,6 +7,8 @@
 script = ExtResource("1_hw0jr")
 healSize = 3
 timeHeal = 5
+price = 30
+timeout = 5
 name = "Хилка"
 description = "небольшое зелёное зелье с сияющей жидкостью. Лечение: +3 HP/сек, длительность 5 секунд"
 max_stack_size = 4

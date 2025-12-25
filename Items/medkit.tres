@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_r78et")
-price = 15
+price = 20
 name = "Аптечка"
 description = "классический большой предмет восстановления. Лечение: +25 HP"
 max_stack_size = 4

@@ -8,9 +8,14 @@ extends Node
 
 var player_health: int = 100
 var max_health: int = 100
+var SPEED: float = 300.0
 
 var money: int = 10
 var itemscounts = {}
+
+var timeout_heal = false
+var timeout_boost = false
+var timeout_shield = false
 
 func _ready():
 	itemscounts = {

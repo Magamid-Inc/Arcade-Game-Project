@@ -53,14 +53,49 @@ func remove_item (item : Item = null):
 	
 	match item:
 		GameState.potion:
-			for i in range(item.timeHeal):
-				GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
-				await get_tree().create_timer(1.0).timeout
+			if not GameState.timeout_heal:
+				GameState.timeout_heal = true
+				for i in range(item.timeHeal):
+					GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+					await get_tree().create_timer(1.0).timeout
+				GameState.timeout_heal = false
+			else:
+				GameState.itemscounts[item.identity] += 1
 		GameState.medkit:
-			GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+			if not GameState.timeout_heal:
+				GameState.timeout_heal = true
+				GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+				await get_tree().create_timer(item.timeout).timeout
+				GameState.timeout_heal = false
+			else:
+				GameState.itemscounts[item.identity] += 1
 		GameState.heart:
-			GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+			if not GameState.timeout_heal:
+				GameState.timeout_heal = true
+				GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
+				await get_tree().create_timer(item.timeout).timeout
+				GameState.timeout_heal = false
+			else:
+				GameState.itemscounts[item.identity] += 1
 		GameState.boost:
-			pass
+			if not GameState.timeout_boost:
+				GameState.timeout_boost = true
+				GameState.SPEED = GameState.SPEED * (100 + item.boostPercent) / 100
+				print(GameState.SPEED, item.boostPercent)
+				await get_tree().create_timer(item.time).timeout
+				GameState.SPEED = GameState.SPEED / (100 + item.boostPercent) * 100
+				print(GameState.SPEED)
+				GameState.timeout_boost = false
+			else:
+				GameState.itemscounts[item.identity] += 1
 		GameState.shield:
-			pass
+			if not GameState.timeout_shield:
+				GameState.timeout_shield = true
+				%Player.shield_effect.visible = true
+				#%Player.pickup_collision_shape.shape.radius = 40
+				await get_tree().create_timer(item.time).timeout
+				%Player.shield_effect.visible = false
+				#%Player.pickup_collision_shape.shape.radius = 20.52
+				GameState.timeout_shield = false
+			else:
+				GameState.itemscounts[item.identity] += 1
