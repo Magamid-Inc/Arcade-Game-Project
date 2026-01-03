@@ -1,0 +1,280 @@
+[gd_scene load_steps=16 format=3 uid="uid://c2phj32j0mqbg"]
+
+[ext_resource type="Texture2D" uid="uid://ccia384ipb6o8" path="res://assets/settings/settings_bg.png" id="1_05p07"]
+[ext_resource type="Script" uid="uid://cd8up11jqw23r" path="res://scripts/settings_menu_script.gd" id="1_48ojb"]
+[ext_resource type="Texture2D" uid="uid://dmoh4qgp77l3k" path="res://assets/settings/btn_exit.png" id="2_wswnh"]
+[ext_resource type="Texture2D" uid="uid://cfhoo5xri0frh" path="res://assets/settings/btn_save.png" id="3_labj1"]
+[ext_resource type="Texture2D" uid="uid://bgw8olfmvdfnd" path="res://assets/settings/arrow_select.png" id="5_bgjg7"]
+[ext_resource type="Texture2D" uid="uid://c1ianqrjtlnk2" path="res://assets/settings/slider.png" id="6_48ojb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fb6cq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.039215688, 0.24313726, 0.40392157, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ctot"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrqig"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpbdv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.039215688, 0.24313726, 0.40392157, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puhno"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75x6d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48ojb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.039215688, 0.24313726, 0.40392157, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n35ux"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0fy7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+corner_detail = 6
+
+[node name="SettingsMenu" type="Node2D"]
+script = ExtResource("1_48ojb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_05p07")
+
+[node name="LabelSettings" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 120.0
+offset_right = 668.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 33
+text = "Настройки"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelWinSize" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 212.0
+offset_right = 390.0
+offset_bottom = 244.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Разрешение окна"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelDisplayMode" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 268.0
+offset_right = 427.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Режим отображения"
+
+[node name="LabelGlobalVolume" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 325.0
+offset_right = 391.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Общая громкость"
+
+[node name="LabelAmbientVolume" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 381.0
+offset_right = 442.0
+offset_bottom = 413.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Громкость окружения"
+
+[node name="LabelMusicVolume" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 437.0
+offset_right = 403.0
+offset_bottom = 469.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Громкость музыки"
+
+[node name="TextureButtonExit" type="TextureButton" parent="."]
+offset_left = 587.0
+offset_top = 548.0
+offset_right = 761.0
+offset_bottom = 591.0
+texture_normal = ExtResource("2_wswnh")
+
+[node name="TextureButtonSave" type="TextureButton" parent="."]
+offset_left = 391.0
+offset_top = 548.0
+offset_right = 565.0
+offset_bottom = 591.0
+texture_normal = ExtResource("3_labj1")
+
+[node name="OptionButtonWinSize" type="OptionButton" parent="."]
+offset_left = 697.0
+offset_top = 212.0
+offset_right = 947.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 23
+theme_override_icons/arrow = ExtResource("5_bgjg7")
+alignment = 1
+icon_alignment = 1
+selected = 4
+item_count = 5
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600 x 900"
+popup/item_1/id = 1
+popup/item_2/text = "1366 x 768"
+popup/item_2/id = 2
+popup/item_3/text = "1280 x 720"
+popup/item_3/id = 3
+popup/item_4/text = "1152 x 648"
+popup/item_4/id = 4
+
+[node name="OptionButtonDisplayMode" type="OptionButton" parent="."]
+offset_left = 697.0
+offset_top = 268.0
+offset_right = 947.0
+offset_bottom = 311.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+theme_override_icons/arrow = ExtResource("5_bgjg7")
+alignment = 1
+icon_alignment = 1
+selected = 1
+item_count = 3
+popup/item_0/text = "окно"
+popup/item_0/id = 0
+popup/item_1/text = "окно без рамок"
+popup/item_1/id = 1
+popup/item_2/text = "полноэкранный"
+popup/item_2/id = 2
+
+[node name="HSliderGlobslVolume" type="HSlider" parent="."]
+offset_left = 657.0
+offset_top = 381.0
+offset_right = 885.0
+offset_bottom = 401.0
+theme_override_icons/grabber = ExtResource("6_48ojb")
+theme_override_icons/grabber_highlight = ExtResource("6_48ojb")
+theme_override_icons/grabber_disabled = ExtResource("6_48ojb")
+theme_override_styles/slider = SubResource("StyleBoxFlat_fb6cq")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_2ctot")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_jrqig")
+value = 11.0
+
+[node name="HSliderAmbientVolume" type="HSlider" parent="."]
+offset_left = 657.0
+offset_top = 437.0
+offset_right = 885.0
+offset_bottom = 457.0
+theme_override_icons/grabber = ExtResource("6_48ojb")
+theme_override_icons/grabber_highlight = ExtResource("6_48ojb")
+theme_override_icons/grabber_disabled = ExtResource("6_48ojb")
+theme_override_styles/slider = SubResource("StyleBoxFlat_jpbdv")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_puhno")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_75x6d")
+value = 100.0
+
+[node name="HSliderMusicVolume" type="HSlider" parent="."]
+offset_left = 657.0
+offset_top = 325.0
+offset_right = 885.0
+offset_bottom = 345.0
+theme_override_icons/grabber = ExtResource("6_48ojb")
+theme_override_icons/grabber_highlight = ExtResource("6_48ojb")
+theme_override_icons/grabber_disabled = ExtResource("6_48ojb")
+theme_override_styles/slider = SubResource("StyleBoxFlat_48ojb")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_n35ux")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_n0fy7")
+value = 70.0
+
+[node name="LabelGlobalVolumeValue3" type="Label" parent="."]
+offset_left = 902.0
+offset_top = 381.0
+offset_right = 935.0
+offset_bottom = 404.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 16
+text = "11%"
+horizontal_alignment = 1
+
+[node name="LabelGlobalVolumeValue2" type="Label" parent="."]
+offset_left = 902.0
+offset_top = 437.0
+offset_right = 935.0
+offset_bottom = 460.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 16
+text = "100%"
+horizontal_alignment = 1
+
+[node name="LabelGlobalVolumeValue" type="Label" parent="."]
+offset_left = 902.0
+offset_top = 325.0
+offset_right = 935.0
+offset_bottom = 348.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 16
+text = "70%"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="TextureButtonExit" to="." method="press_exit_button"]
+[connection signal="pressed" from="TextureButtonSave" to="." method="press_save_button"]
