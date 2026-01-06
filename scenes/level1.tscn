@@ -163,6 +163,7 @@ stretch_mode = 1
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("6_mvsps")]
 unique_name_in_owner = true
+z_index = 1
 position = Vector2(-30, 7)
 
 [node name="CoinSpawner" type="Node2D" parent="."]
