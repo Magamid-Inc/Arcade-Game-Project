@@ -12,8 +12,8 @@ func _process(_delta) -> void:
 	update_quantity_text()
 	
 func update_quantity_text ():
-	potion_quantity_text.text = str(quantitys["potion"]) 
-	shield_quantity_text.text = str(quantitys["shield"])
-	heal_kit_quantity_text.text = str(quantitys["medkit"])
-	heart_quantity_text.text = str(quantitys["heart"])
-	boost_quantity_text.text = str(quantitys["boost"])
+	potion_quantity_text.text = "x" + str(quantitys["potion"]) 
+	shield_quantity_text.text = "x" + str(quantitys["shield"])
+	heal_kit_quantity_text.text = "x" + str(quantitys["medkit"])
+	heart_quantity_text.text = "x" + str(quantitys["heart"])
+	boost_quantity_text.text = "x" + str(quantitys["boost"])

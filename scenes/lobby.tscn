@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bg2jtbpnpgh78"]
+[gd_scene load_steps=21 format=4 uid="uid://bg2jtbpnpgh78"]
 
 [ext_resource type="Texture2D" uid="uid://ckhxso1dyibm0" path="res://assets/locationDesign/lobby.png" id="1_o1atq"]
 [ext_resource type="PackedScene" uid="uid://dg6tbf8uavjqm" path="res://scenes/player.tscn" id="2_5gu6x"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dihdbhftx6il3" path="res://scripts/terminal_window.gd" id="7_yad6j"]
 [ext_resource type="Texture2D" uid="uid://d04mxcdie4n04" path="res://assets/locationDesign/Terminal_bg.png" id="9_07nfq"]
 [ext_resource type="PackedScene" uid="uid://dcp1e2sn18y8l" path="res://scenes/item_buy_cart.tscn" id="10_oipnb"]
+[ext_resource type="FontFile" uid="uid://uqqs8mv8y072" path="res://assets/PressStart2P-Regular.ttf" id="12_m1sns"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omrgh"]
 texture = ExtResource("1_o1atq")
@@ -403,6 +404,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.99215686, 0.654902, 0, 1)
+theme_override_fonts/font = ExtResource("12_m1sns")
 
 [connection signal="body_entered" from="ExitToLvlArea2D" to="Player" method="_body_entered_from_lobby_to_lvl"]
 [connection signal="body_entered" from="TerminalActivateArea2D" to="Terminal" method="_open_terminal_permission"]

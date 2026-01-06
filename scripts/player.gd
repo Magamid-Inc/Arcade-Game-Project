@@ -114,7 +114,7 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 # --------------------------------------------------
 
 func take_damage(amount: int) -> void:
-	if check_die or GameState.timeout_shield:
+	if check_die or GameState.timeout_shield or GameState.is_transitioning:
 		return
 
 	# 🔴 ВИЗУАЛЬНЫЙ ФИДБЕК

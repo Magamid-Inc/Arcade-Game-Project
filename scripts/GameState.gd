@@ -6,6 +6,8 @@ extends Node
 @onready var heart: Item = preload("res://Items/heart.tres")
 @onready var boost: Item = preload("res://Items/boost.tres")
 
+var is_transitioning: bool = false
+
 var player_health: int = 100
 var max_health: int = 100
 var SPEED: float = 300.0
