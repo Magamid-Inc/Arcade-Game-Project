@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx0yj20eolb7n"]
+
+[ext_resource type="Script" uid="uid://7o718dn6kjnr" path="res://scripts/game_over_menu_scripnt.gd" id="1_bxvkx"]
+[ext_resource type="Texture2D" uid="uid://tuojukyv3utk" path="res://assets/menu_fone.png" id="1_m6src"]
+[ext_resource type="Texture2D" uid="uid://dmoh4qgp77l3k" path="res://assets/settings/btn_exit.png" id="2_ao2co"]
+
+[node name="GameOverMenu" type="Node2D"]
+script = ExtResource("1_bxvkx")
+
+[node name="fone" type="TextureRect" parent="."]
+offset_left = 263.0
+offset_top = 60.0
+offset_right = 891.0
+offset_bottom = 580.0
+texture = ExtResource("1_m6src")
+
+[node name="Label" type="Label" parent="fone"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 150.0
+offset_right = 32.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Умер"
+
+[node name="LabelBeforeTime" type="Label" parent="fone"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Оставшееся время:"
+
+[node name="LabelTime" type="Label" parent="fone"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "00:10"
+
+[node name="TextureButtonReset" type="TextureButton" parent="fone"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 367.0
+offset_right = 528.0
+offset_bottom = 410.0
+tooltip_text = "Нажмите, чтобы начать уровень с начала"
+texture_normal = ExtResource("2_ao2co")
+
+[node name="Label" type="Label" parent="fone/TextureButtonReset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -2.0
+offset_right = -8.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "С начала"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButtonExit" type="TextureButton" parent="fone"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 367.0
+offset_right = 272.0
+offset_bottom = 410.0
+tooltip_text = "Нажмите, чтобы выйти в лобби"
+texture_normal = ExtResource("2_ao2co")
+
+[connection signal="pressed" from="fone/TextureButtonReset" to="." method="press_reset_button"]
+[connection signal="pressed" from="fone/TextureButtonExit" to="." method="press_exit_button"]

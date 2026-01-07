@@ -64,7 +64,8 @@ func save_volume():
 func set_window_mode():
 	var selected_index: int = button_display_mode.selected
 	
-	GameSettingsState.display_mode = win_mods[selected_index]
+	#GameSettingsState.display_mode = win_mods[selected_index]
+	GameSettingsState.display_mode_index = selected_index
 	GameSettingsState.is_borderless = true if selected_index == 1 else false
 	
 	var display_size = DisplayServer.screen_get_size()

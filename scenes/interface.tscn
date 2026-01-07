@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfqyyw0haxij5"]
+[gd_scene load_steps=20 format=3 uid="uid://cfqyyw0haxij5"]
 
 [ext_resource type="Script" uid="uid://bu7pxqn13a5t4" path="res://timer.gd" id="1_nwt6j"]
+[ext_resource type="Script" uid="uid://bvsjx1egfs4c8" path="res://scripts/interface_script.gd" id="1_prp0k"]
 [ext_resource type="Script" uid="uid://bs11g523nrrfd" path="res://scripts/player_health_ui.gd" id="3_32vrv"]
 [ext_resource type="Texture2D" uid="uid://bnkx40o50yucj" path="res://assets/interface/bg bar hp.png" id="4_ttflf"]
 [ext_resource type="Texture2D" uid="uid://bf4fmx75n6hfd" path="res://assets/interface/progress bar hp 2nd layer.png" id="5_prp0k"]
@@ -14,10 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://if3iysetgv6k" path="res://assets/loot/medkit.png" id="12_uixvr"]
 [ext_resource type="Texture2D" uid="uid://c0no2ehi1ykgu" path="res://assets/loot/heart.png" id="13_8qqos"]
 [ext_resource type="Texture2D" uid="uid://w4s5xmxet0mr" path="res://assets/loot/boost.png" id="14_4k6dw"]
+[ext_resource type="PackedScene" uid="uid://y5d217g5wnfb" path="res://scenes/lvlCompleteMenu.tscn" id="15_32vrv"]
+[ext_resource type="Script" uid="uid://dcv650gruua68" path="res://scripts/menu_inspector_script.gd" id="15_ttflf"]
+[ext_resource type="PackedScene" uid="uid://bx0yj20eolb7n" path="res://scenes/gameOverMenu.tscn" id="16_ttflf"]
+[ext_resource type="PackedScene" uid="uid://c3dkf300mcyuj" path="res://scenes/fast_menu.tscn" id="19_dtbhd"]
 
 [node name="Interface" type="CanvasLayer"]
-
-[node name="m" type="Node" parent="."]
+script = ExtResource("1_prp0k")
 
 [node name="Timer" type="Label" parent="."]
 offset_left = 701.0
@@ -57,8 +61,7 @@ texture_progress_offset = Vector2(18, 12)
 offset_top = 7.0
 offset_right = 192.0
 offset_bottom = 57.0
-theme_override_fonts/font = ExtResource("8_ctaxy")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -290,3 +293,21 @@ theme_override_fonts/font = ExtResource("8_ctaxy")
 theme_override_font_sizes/font_size = 18
 text = "∞"
 horizontal_alignment = 2
+
+[node name="MenuInspector" type="Node" parent="."]
+script = ExtResource("15_ttflf")
+
+[node name="blurFilter" type="ColorRect" parent="MenuInspector"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.427493, 0.42749307, 0.42749307, 0.5921569)
+
+[node name="LvlCompleteMenu" parent="MenuInspector" instance=ExtResource("15_32vrv")]
+visible = false
+
+[node name="GameOverMenu" parent="MenuInspector" instance=ExtResource("16_ttflf")]
+visible = false
+
+[node name="FastMenu" parent="MenuInspector" instance=ExtResource("19_dtbhd")]
+visible = false

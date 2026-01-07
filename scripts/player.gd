@@ -55,7 +55,12 @@ func _physics_process(_delta: float) -> void:
 			direction.x += 1
 
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+		pass
+		#if not $"../Interface".check_visible_fast_menu:
+			#$"../Interface".menu_inspector.visible_fast_menu(true)
+		#else:
+			#$"../Interface".menu_inspector.visible_fast_menu(false)
+			
 
 	velocity = direction.normalized() * GameState.SPEED
 	move_and_slide()
@@ -142,9 +147,7 @@ func die() -> void:
 	#collision_shape.disabled = true
 	animated_sprite.modulate = Color.WHITE
 	animated_sprite.play("die")
-
-	await get_tree().create_timer(3.0).timeout
-	$"../GameOverScreen".visible = true
+	#$"../GameOverScreen".visible = true
 
 
 # --------------------------------------------------
