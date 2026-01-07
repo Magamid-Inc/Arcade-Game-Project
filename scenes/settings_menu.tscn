@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c2phj32j0mqbg"]
+[gd_scene load_steps=31 format=3 uid="uid://c2phj32j0mqbg"]
 
 [ext_resource type="Texture2D" uid="uid://ccia384ipb6o8" path="res://assets/settings/settings_bg.png" id="1_05p07"]
 [ext_resource type="Script" uid="uid://cd8up11jqw23r" path="res://scripts/settings_menu_script.gd" id="1_48ojb"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cfhoo5xri0frh" path="res://assets/settings/btn_save.png" id="3_labj1"]
 [ext_resource type="Texture2D" uid="uid://bgw8olfmvdfnd" path="res://assets/settings/arrow_select.png" id="5_bgjg7"]
 [ext_resource type="Texture2D" uid="uid://c1ianqrjtlnk2" path="res://assets/settings/slider.png" id="6_48ojb"]
+[ext_resource type="Script" uid="uid://g7x2gg13nrol" path="res://scripts/custom_option_button.gd" id="7_n35ux"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojcm3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khnq6"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
@@ -19,7 +20,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1j7s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlw5p"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
@@ -31,7 +32,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51alr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqo53"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
@@ -43,7 +44,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aadi2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wa640"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
@@ -55,7 +56,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xvj3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jaajm"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
@@ -67,7 +68,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ba8q1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3esdg"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
@@ -79,36 +80,12 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rockl"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.003921569, 0.019607844, 0.13333334, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtud4"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.003921569, 0.019607844, 0.13333334, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0vrw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp6av"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.003921569, 0.019607844, 0.13333334, 1)
+bg_color = Color(1, 1, 1, 0)
 draw_center = false
 border_width_left = 2
 border_width_top = 2
@@ -196,36 +173,12 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khnq6"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.003921569, 0.019607844, 0.13333334, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlw5p"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.003921569, 0.019607844, 0.13333334, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmx0a"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.003921569, 0.019607844, 0.13333334, 1)
+bg_color = Color(1, 1, 1, 0)
 draw_center = false
 border_width_left = 2
 border_width_top = 2
@@ -337,7 +290,7 @@ offset_top = 212.0
 offset_right = 390.0
 offset_bottom = 244.0
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 15
 text = "Разрешение окна"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -348,7 +301,7 @@ offset_top = 268.0
 offset_right = 427.0
 offset_bottom = 300.0
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 15
 text = "Режим отображения"
 
 [node name="LabelGlobalVolume" type="Label" parent="."]
@@ -357,7 +310,7 @@ offset_top = 325.0
 offset_right = 391.0
 offset_bottom = 357.0
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 15
 text = "Общая громкость"
 
 [node name="LabelAmbientVolume" type="Label" parent="."]
@@ -366,7 +319,7 @@ offset_top = 381.0
 offset_right = 442.0
 offset_bottom = 413.0
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 15
 text = "Громкость окружения"
 
 [node name="LabelMusicVolume" type="Label" parent="."]
@@ -375,7 +328,7 @@ offset_top = 437.0
 offset_right = 403.0
 offset_bottom = 469.0
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 15
 text = "Громкость музыки"
 
 [node name="TextureButtonExit" type="TextureButton" parent="."]
@@ -393,60 +346,54 @@ offset_bottom = 591.0
 texture_normal = ExtResource("3_labj1")
 
 [node name="OptionButtonWinSize" type="OptionButton" parent="."]
-offset_left = 697.0
+offset_left = 657.0
 offset_top = 212.0
-offset_right = 947.0
-offset_bottom = 255.0
-theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_ojcm3")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_y1j7s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_51alr")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_aadi2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0xvj3")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ba8q1")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_rockl")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_mtud4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_s0vrw")
-theme_override_icons/arrow = ExtResource("5_bgjg7")
-alignment = 1
-icon_alignment = 1
-selected = 4
-item_count = 5
-popup/item_0/text = "1920 x 1080"
-popup/item_0/id = 0
-popup/item_1/text = "1600 x 900"
-popup/item_1/id = 1
-popup/item_2/text = "1366 x 768"
-popup/item_2/id = 2
-popup/item_3/text = "1280 x 720"
-popup/item_3/id = 3
-popup/item_4/text = "1152 x 648"
-popup/item_4/id = 4
-
-[node name="OptionButtonDisplayMode" type="OptionButton" parent="."]
-offset_left = 697.0
-offset_top = 268.0
-offset_right = 947.0
-offset_bottom = 311.0
+offset_right = 950.0
+offset_bottom = 247.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
 theme_override_colors/font_focus_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
 theme_override_colors/font_pressed_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_colors/icon_normal_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_colors/icon_focus_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_colors/icon_pressed_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_khnq6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vlw5p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jqo53")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_wa640")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jaajm")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_3esdg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hp6av")
+theme_override_constants/arrow_margin = 12
+theme_override_icons/arrow = ExtResource("5_bgjg7")
+alignment = 1
+icon_alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "1152 x 648"
+popup/item_0/id = 0
+script = ExtResource("7_n35ux")
+custom_check_marker = ExtResource("6_48ojb")
+metadata/_custom_type_script = "uid://g7x2gg13nrol"
+
+[node name="OptionButtonDisplayMode" type="OptionButton" parent="."]
+offset_left = 657.0
+offset_top = 265.0
+offset_right = 950.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_colors/font_focus_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_colors/font_pressed_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_bgjg7")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_x0dr5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gdgfw")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_vymnv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2tyyr")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_wambi")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_khnq6")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_vlw5p")
 theme_override_styles/focus = SubResource("StyleBoxFlat_fmx0a")
-theme_override_constants/arrow_margin = 10
+theme_override_constants/arrow_margin = 12
 theme_override_icons/arrow = ExtResource("5_bgjg7")
 alignment = 1
 icon_alignment = 1
@@ -458,6 +405,9 @@ popup/item_1/text = "окно без рамок"
 popup/item_1/id = 1
 popup/item_2/text = "полноэкранный"
 popup/item_2/id = 2
+script = ExtResource("7_n35ux")
+custom_check_marker = ExtResource("6_48ojb")
+metadata/_custom_type_script = "uid://g7x2gg13nrol"
 
 [node name="HSliderGlobalVolume" type="HSlider" parent="."]
 offset_left = 657.0

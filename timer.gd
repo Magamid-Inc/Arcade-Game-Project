@@ -19,6 +19,7 @@ func _process(_delta: float) -> void:
 
 func format_time(time: float) -> String:
 	var total := int(time)
+	@warning_ignore("integer_division")
 	var minutes := total / 60
 	var seconds := total % 60
 	return "%02d:%02d" % [minutes, seconds]

@@ -81,10 +81,8 @@ func remove_item (item : Item = null):
 			if not GameState.timeout_boost:
 				GameState.timeout_boost = true
 				GameState.SPEED = GameState.SPEED * (100 + item.boostPercent) / 100
-				print(GameState.SPEED, item.boostPercent)
 				await get_tree().create_timer(item.time).timeout
 				GameState.SPEED = GameState.SPEED / (100 + item.boostPercent) * 100
-				print(GameState.SPEED)
 				GameState.timeout_boost = false
 			else:
 				GameState.itemscounts[item.identity] += 1

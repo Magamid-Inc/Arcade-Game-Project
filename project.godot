@@ -26,6 +26,10 @@ GameSettingsState="*res://scripts/GameSettingsState.gd"
 
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom_font="uid://uqqs8mv8y072"
+
 [input]
 
 ui_cancel={

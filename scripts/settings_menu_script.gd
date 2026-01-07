@@ -27,23 +27,6 @@ func _ready() -> void:
 		GameSettingsState.ambient_volume,
 		GameSettingsState.music_volume
 	]
-	var popup_dm = button_display_mode.get_popup()
-	var popup_ws = button_win_size.get_popup()
-	var style = StyleBoxFlat.new()
-	var theme_button = Theme.new()
-	
-	style.bg_color = Color("010522")
-	style.set_corner_radius_all(5)
-	style.border_color = Color("0A3E67")
-	style.border_width_bottom = 5
-	style.border_width_left = 5
-	style.border_width_right = 5
-	
-	theme_button.set_stylebox("panel", "PopupMenu", style)
-	theme_button.set_color("font_color", "PopupMenu", Color("06E0EF"))
-	theme_button.set_font_size("font_size", "PopupMenu", 23)
-	popup_dm.theme = theme_button
-	popup_ws.theme = theme_button
 	
 	for i in range(len(last_volumes)):
 		volume_sliders[i].value = last_volumes[i]
