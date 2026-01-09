@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://chmgsk387f8eu"]
+[gd_scene load_steps=5 format=3 uid="uid://chmgsk387f8eu"]
 
 [ext_resource type="Texture2D" uid="uid://c3i8t6q4xqlnd" path="res://assets/start_screne/start_screen_bg.png" id="1_tx5wa"]
 [ext_resource type="Script" uid="uid://b0sg7x28qnklb" path="res://scripts/start_scene/buttons.gd" id="2_hm208"]
-[ext_resource type="Texture2D" uid="uid://be21lcylbqjxk" path="res://assets/start_screne/btn_start.png" id="2_o7i0r"]
-[ext_resource type="Texture2D" uid="uid://dbkneuu15hy3w" path="res://assets/start_screne/btn_exit.png" id="3_5pab1"]
-[ext_resource type="Texture2D" uid="uid://cenefsn2jxiev" path="res://assets/start_screne/btn_settings.png" id="4_o30b1"]
+[ext_resource type="Texture2D" uid="uid://kjge1d3hecv" path="res://assets/btn_empty.png" id="4_hm208"]
+[ext_resource type="Texture2D" uid="uid://cxsggbwwn5tp7" path="res://assets/btn_empty_pressed.png" id="5_5pab1"]
 
 [node name="StartScreen" type="Node2D"]
 
@@ -16,27 +15,86 @@ texture = ExtResource("1_tx5wa")
 [node name="Buttons" type="Node" parent="."]
 script = ExtResource("2_hm208")
 
-[node name="ExitButton" type="TextureButton" parent="Buttons"]
+[node name="StartGameButton" type="TextureButton" parent="Buttons"]
 offset_left = 288.0
-offset_top = 448.0
+offset_top = 272.0
 offset_right = 583.0
-offset_bottom = 521.0
-texture_normal = ExtResource("3_5pab1")
+offset_bottom = 345.0
+texture_normal = ExtResource("4_hm208")
+texture_pressed = ExtResource("5_5pab1")
+texture_hover = ExtResource("5_5pab1")
+
+[node name="Label" type="Label" parent="Buttons/StartGameButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Начать игру"
 
 [node name="SettingsButton" type="TextureButton" parent="Buttons"]
 offset_left = 288.0
 offset_top = 360.0
 offset_right = 583.0
 offset_bottom = 433.0
-texture_normal = ExtResource("4_o30b1")
+texture_normal = ExtResource("4_hm208")
+texture_pressed = ExtResource("5_5pab1")
+texture_hover = ExtResource("5_5pab1")
 
-[node name="StartGameButton" type="TextureButton" parent="Buttons"]
+[node name="Label" type="Label" parent="Buttons/SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Настройки"
+
+[node name="ExitButton" type="TextureButton" parent="Buttons"]
 offset_left = 288.0
-offset_top = 272.0
+offset_top = 448.0
 offset_right = 583.0
-offset_bottom = 345.0
-texture_normal = ExtResource("2_o7i0r")
+offset_bottom = 521.0
+texture_normal = ExtResource("4_hm208")
+texture_pressed = ExtResource("5_5pab1")
+texture_hover = ExtResource("5_5pab1")
 
-[connection signal="pressed" from="Buttons/ExitButton" to="Buttons" method="exit_button_pressed"]
-[connection signal="pressed" from="Buttons/SettingsButton" to="Buttons" method="settings_button_pressed"]
+[node name="Label" type="Label" parent="Buttons/ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Выход"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Buttons/StartGameButton" to="Buttons" method="start_button_pressed"]
+[connection signal="pressed" from="Buttons/SettingsButton" to="Buttons" method="settings_button_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="Buttons" method="exit_button_pressed"]

@@ -66,15 +66,6 @@ func setup_popup_style():
 	theme_button.set_font("font", "PopupMenu", popup_menu_font)
 	theme_button.set_font_size("font_size", "PopupMenu", popup_menu_font_size)
 	theme_button.set_color("font_color", "PopupMenu", Color("06E0EF"))
-	#if custom_check_marker:
-		#var check_style = StyleBoxFlat.new()
-		#check_style.bg_color = bg_check_color
-		#theme_button.set_stylebox("radio_check", "PopupMenu", check_style)
-		#theme_button.set_icon("radio_checked", "PopupMenu", custom_check_marker)
-		#var uncheck_style = check_style.duplicate()
-		#uncheck_style.bg_color = bg_uncheck_color
-		#theme_button.add_icon_check_item(custom_check_marker)
-		#theme_button.set_stylebox("radio_unchecked", "PopupMenu", null)
 	
 	var hover_style = style.duplicate()
 	hover_style.set_border_width_all(0)

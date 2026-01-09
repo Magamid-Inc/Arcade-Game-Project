@@ -21,6 +21,8 @@ config/icon="res://icon.svg"
 GameState="*res://scripts/GameState.gd"
 ScreenFader="*res://scripts/screen_fade_manager.gd"
 GameSettingsState="*res://scripts/GameSettingsState.gd"
+SceneManager="*res://scripts/Scene_manager.gd"
+ButtonsListener="*res://scripts/Buttons_listener.gd"
 
 [display]
 

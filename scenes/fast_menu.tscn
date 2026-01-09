@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3dkf300mcyuj"]
+[gd_scene load_steps=5 format=3 uid="uid://c3dkf300mcyuj"]
 
 [ext_resource type="Script" uid="uid://dwsaehb7ew26r" path="res://scripts/fast_menu_script.gd" id="1_csqqr"]
 [ext_resource type="Texture2D" uid="uid://tuojukyv3utk" path="res://assets/menu_fone.png" id="1_e3owc"]
-[ext_resource type="Texture2D" uid="uid://be21lcylbqjxk" path="res://assets/start_screne/btn_start.png" id="2_csqqr"]
-[ext_resource type="Texture2D" uid="uid://cenefsn2jxiev" path="res://assets/start_screne/btn_settings.png" id="3_m66h0"]
-[ext_resource type="Texture2D" uid="uid://dbkneuu15hy3w" path="res://assets/start_screne/btn_exit.png" id="4_bpv2r"]
+[ext_resource type="Texture2D" uid="uid://kjge1d3hecv" path="res://assets/btn_empty.png" id="3_4x6ip"]
+[ext_resource type="Texture2D" uid="uid://cxsggbwwn5tp7" path="res://assets/btn_empty_pressed.png" id="4_e3owc"]
 
 [node name="FastMenu" type="Node2D"]
 script = ExtResource("1_csqqr")
@@ -43,8 +42,9 @@ offset_right = 156.0
 offset_bottom = -282.0
 grow_horizontal = 2
 grow_vertical = 0
-tooltip_text = "Нажмите, чтобы попасть в лобби"
-texture_normal = ExtResource("2_csqqr")
+texture_normal = ExtResource("3_4x6ip")
+texture_pressed = ExtResource("4_e3owc")
+texture_hover = ExtResource("4_e3owc")
 
 [node name="Label" type="Label" parent="fone/TextureButtonContinue"]
 layout_mode = 1
@@ -59,9 +59,11 @@ offset_right = 80.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.33551347, 0.92174673, 0, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
 text = "Продолжить"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureButtonSettings" type="TextureButton" parent="fone"]
 layout_mode = 1
@@ -76,8 +78,9 @@ offset_right = 156.0
 offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 0
-tooltip_text = "Нажмите, чтобы попасть в лобби"
-texture_normal = ExtResource("3_m66h0")
+texture_normal = ExtResource("3_4x6ip")
+texture_pressed = ExtResource("4_e3owc")
+texture_hover = ExtResource("4_e3owc")
 
 [node name="Label" type="Label" parent="fone/TextureButtonSettings"]
 layout_mode = 1
@@ -93,6 +96,10 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Настройки"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureButtonQuitGame" type="TextureButton" parent="fone"]
 layout_mode = 1
@@ -107,8 +114,9 @@ offset_right = 156.0
 offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 0
-tooltip_text = "Нажмите, чтобы попасть в лобби"
-texture_normal = ExtResource("4_bpv2r")
+texture_normal = ExtResource("3_4x6ip")
+texture_pressed = ExtResource("4_e3owc")
+texture_hover = ExtResource("4_e3owc")
 
 [node name="Label" type="Label" parent="fone/TextureButtonQuitGame"]
 layout_mode = 1
@@ -124,6 +132,10 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.023529412, 0.8784314, 0.9372549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Выход"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="fone/TextureButtonContinue" to="." method="press_continue_button"]
 [connection signal="pressed" from="fone/TextureButtonSettings" to="." method="press_settings_button"]

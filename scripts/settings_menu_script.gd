@@ -64,7 +64,6 @@ func save_volume():
 func set_window_mode():
 	var selected_index: int = button_display_mode.selected
 	
-	#GameSettingsState.display_mode = win_mods[selected_index]
 	GameSettingsState.display_mode_index = selected_index
 	GameSettingsState.is_borderless = true if selected_index == 1 else false
 	
@@ -106,4 +105,5 @@ func press_save_button():
 
 
 func press_exit_button():
-	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+	SceneManager.move_to_last_scene("SettingsMenu")
+	#get_tree().change_scene_to_file("res://scenes/start_screen.tscn")

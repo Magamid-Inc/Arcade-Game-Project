@@ -294,7 +294,8 @@ theme_override_font_sizes/font_size = 18
 text = "∞"
 horizontal_alignment = 2
 
-[node name="MenuInspector" type="Node" parent="."]
+[node name="MenuInspector" type="CanvasLayer" parent="."]
+layer = 5
 script = ExtResource("15_ttflf")
 
 [node name="blurFilter" type="ColorRect" parent="MenuInspector"]

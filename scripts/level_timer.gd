@@ -49,6 +49,6 @@ func end_level() -> void:
 func show_gameover_menu():
 	finished = true
 	await get_tree().create_timer(3.0).timeout
-	var minutes: int = floor(time_left) / 60
-	var seconds: int = int(time_left) % 60
+	var minutes: int = floor(level_time-time_left) / 60
+	var seconds: int = int(level_time-time_left) % 60
 	$"../Interface".visible_game_over(true, "%02d:%02d" % [minutes, seconds])

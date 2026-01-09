@@ -35,16 +35,12 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var direction := Vector2.ZERO
-	var is_terminal_open := false
-
-	var terminal := get_node_or_null("../Terminal")
-	if terminal != null:
-		is_terminal_open = terminal.visible
+	
 
 	# -----------------------------
 	# ВВОД ДВИЖЕНИЯ
 	# -----------------------------
-	if not check_die and ScreenFader.fade_instance == null and not is_terminal_open:
+	if not check_die and ScreenFader.fade_instance == null and not ButtonsListener.is_terminal_open:
 		if Input.is_action_pressed("move_up"):
 			direction.y -= 1
 		if Input.is_action_pressed("move_down"):
@@ -53,14 +49,6 @@ func _physics_process(_delta: float) -> void:
 			direction.x -= 1
 		if Input.is_action_pressed("move_right"):
 			direction.x += 1
-
-	if Input.is_action_just_pressed("ui_cancel"):
-		pass
-		#if not $"../Interface".check_visible_fast_menu:
-			#$"../Interface".menu_inspector.visible_fast_menu(true)
-		#else:
-			#$"../Interface".menu_inspector.visible_fast_menu(false)
-			
 
 	velocity = direction.normalized() * GameState.SPEED
 	move_and_slide()
