@@ -11,6 +11,7 @@ extends Node2D
 @export var spawn_offset: float = 64.0
 
 @onready var player: Node2D = get_node("../Player")
+@onready var is_sleep: bool = false
 
 
 func _ready() -> void:
@@ -21,6 +22,8 @@ func _ready() -> void:
 
 
 func _schedule_next() -> void:
+	#if is_sleep:
+		#return 
 	var delay: float = randf_range(min_delay, max_delay)
 	get_tree().create_timer(delay).timeout.connect(_spawn_meteor)
 
@@ -102,3 +105,11 @@ func _spawn_meteor() -> void:
 		push_warning("У метеорита нет metadata 'Damage'!")
 
 	_schedule_next()
+
+
+func set_schedule_next(enable: bool):
+	print(enable)
+	pass
+	#is_sleep = not enable
+	#if enable:
+		#_schedule_next()

@@ -1,6 +1,6 @@
 extends Node
 
-@export var level_time: float = 60.0
+@export var level_time: float = 15.0
 @export var lobby_scene: String = "res://scenes/lobby.tscn"
 
 var time_left: float

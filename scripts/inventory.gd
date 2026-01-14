@@ -1,15 +1,15 @@
 class_name Inventory
 extends Node
 
-@export var starter_items : Array[Item]
-
-
-func _ready ():
-	for i in range(1):
-		starter_items.append(GameState.potion)
-		
-	for item in starter_items:
-		add_item(item)
+#@export var starter_items : Array[Item]
+#
+#
+#func _ready ():
+	#for i in range(1):
+		#starter_items.append(GameState.potion)
+		#
+	#for item in starter_items:
+		#add_item(item)
 
 
 func _process(_delta: float) -> void:

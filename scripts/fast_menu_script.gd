@@ -2,6 +2,7 @@ extends Node
 
 func press_continue_button():
 	get_tree().paused = false
+	get_tree().current_scene.get_node("MeteoriteSpawner").set_schedule_next(true)
 	self.visible = false
 	var filter = get_node("../blurFilter")
 	if filter:

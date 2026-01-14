@@ -26,6 +26,7 @@ func _input(event: InputEvent):
 		elif interface != null:
 			if not interface.check_visible_fast_menu:
 				interface.visible_fast_menu(true)
+				#get_tree().paused = true
 			else:
 				interface.visible_fast_menu(false)
 				get_tree().paused = false

@@ -25,7 +25,7 @@ var occupied_cells: Array[Vector2i] = []
 
 func _ready():
 	itemscounts = {
-		"potion": 0,
+		"potion": 1,
 		"shield": 0,
 		"medkit": 0,
 		"heart": 0,
