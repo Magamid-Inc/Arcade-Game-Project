@@ -21,6 +21,7 @@ func visible_lvl_compl_menu(is_show: bool):
 	GlobalSoundPlayer.lvl_complete.play()
 	menu_inspector.filter.visible = is_show
 	menu_inspector.lvl_complete_menu.visible = is_show
+	menu_inspector.lvl_complete_menu.text_win.text = "Уровень " + str(GameSettingsState.selected_lvl) + " пройден!" 
 
 
 func visible_fast_menu(is_show: bool):

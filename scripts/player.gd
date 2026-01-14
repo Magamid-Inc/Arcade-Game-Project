@@ -151,4 +151,4 @@ func die() -> void:
 # --------------------------------------------------
 
 func _body_entered_from_lobby_to_lvl(_body: Node2D) -> void:
-	await ScreenFader.transition_to_scene("res://scenes/level1.tscn", 1.0)
+	await ScreenFader.transition_to_scene("res://scenes/level"+str(GameSettingsState.selected_lvl)+".tscn", 1.0)
