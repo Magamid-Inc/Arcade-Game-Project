@@ -55,6 +55,7 @@ func remove_item (item : Item = null):
 		GameState.potion:
 			if not GameState.timeout_heal:
 				GameState.timeout_heal = true
+				GlobalSoundPlayer.potion_use.play()
 				for i in range(item.timeHeal):
 					GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
 					await get_tree().create_timer(1.0).timeout
@@ -64,6 +65,7 @@ func remove_item (item : Item = null):
 		GameState.medkit:
 			if not GameState.timeout_heal:
 				GameState.timeout_heal = true
+				GlobalSoundPlayer.heal.play()
 				GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
 				await get_tree().create_timer(item.timeout).timeout
 				GameState.timeout_heal = false
@@ -72,6 +74,7 @@ func remove_item (item : Item = null):
 		GameState.heart:
 			if not GameState.timeout_heal:
 				GameState.timeout_heal = true
+				GlobalSoundPlayer.heal.play()
 				GameState.player_health = clamp(GameState.player_health+item.healSize, 0, GameState.max_health)
 				await get_tree().create_timer(item.timeout).timeout
 				GameState.timeout_heal = false
@@ -80,6 +83,7 @@ func remove_item (item : Item = null):
 		GameState.boost:
 			if not GameState.timeout_boost:
 				GameState.timeout_boost = true
+				GlobalSoundPlayer.boost.play()
 				GameState.SPEED = GameState.SPEED * (100 + item.boostPercent) / 100
 				await get_tree().create_timer(item.time).timeout
 				GameState.SPEED = GameState.SPEED / (100 + item.boostPercent) * 100
@@ -89,11 +93,10 @@ func remove_item (item : Item = null):
 		GameState.shield:
 			if not GameState.timeout_shield:
 				GameState.timeout_shield = true
+				GlobalSoundPlayer.shield.play()
 				%Player.shield_effect.visible = true
-				#%Player.pickup_collision_shape.shape.radius = 40
 				await get_tree().create_timer(item.time).timeout
 				%Player.shield_effect.visible = false
-				#%Player.pickup_collision_shape.shape.radius = 20.52
 				GameState.timeout_shield = false
 			else:
 				GameState.itemscounts[item.identity] += 1

@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		return
 
 	time_left -= delta
-	if %Player.check_die:
+	if %Player.animated_sprite.animation == "die":
 		show_gameover_menu()
 	elif time_left <= 0.0:
 		time_left = 0.0

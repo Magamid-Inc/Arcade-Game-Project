@@ -3,7 +3,7 @@ extends Node
 @onready var time_label: Label = $fone/LabelTime
 
 func press_reset_button():
-	await ScreenFader.transition_to_scene("res://scenes/level1.tscn", 1.0)
+	await ScreenFader.transition_to_scene("res://scenes/level"+str(GameSettingsState.selected_lvl)+".tscn", 1.0)
 
 
 func press_exit_button():

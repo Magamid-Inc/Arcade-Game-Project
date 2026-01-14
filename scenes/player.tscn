@@ -69,7 +69,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
@@ -87,8 +87,10 @@ script = ExtResource("1_g2els")
 position = Vector2(0, -39)
 scale = Vector2(0.8333333, 0.8333333)
 sprite_frames = SubResource("SpriteFrames_d2wvv")
-animation = &"die"
+animation = &"run"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.59660095
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23)

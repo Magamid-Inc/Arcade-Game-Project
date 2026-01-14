@@ -9,12 +9,14 @@ func _ready():
 	fast_menu.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func visible_game_over(is_show: bool, time: String):
+	GlobalSoundPlayer.game_over.play()
 	menu_inspector.filter.visible = is_show
 	menu_inspector.game_over_menu.visible = is_show
 	menu_inspector.game_over_menu.time_label.text = time
 
 
 func visible_lvl_compl_menu(is_show: bool):
+	GlobalSoundPlayer.lvl_complete.play()
 	menu_inspector.filter.visible = is_show
 	menu_inspector.lvl_complete_menu.visible = is_show
 

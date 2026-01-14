@@ -34,24 +34,27 @@ func fade_out(duration: float = 0.3) -> void:
 func transition_to_scene(scene_path: String, fade_duration: float = 0.3) -> void:
 	GameState.is_transitioning = true
 	
+	# ⛔ НЕ показываем таймер, если это лобби
+	if scene_path == LOBBY_SCENE:
+		GlobalSoundPlayer.end_lvl()
+	else:
+		GlobalSoundPlayer.start_lvl(fade_duration * 2)
+		
 	await fade_in(fade_duration)
 	get_tree().change_scene_to_file(scene_path)
 	_ensure_fade_instance()
 	await fade_out(fade_duration)
-
-	# ⛔ НЕ показываем таймер, если это лобби
-	if scene_path == LOBBY_SCENE:
-		fade_instance = null
-		return
+	
 
 	# ▶ Таймер только для уровней
-	var timer: Label = fade_instance.get_node("Label")
-	timer.visible = true
+	if scene_path != LOBBY_SCENE:
+		var timer: Label = fade_instance.get_node("Label")
+		timer.visible = true
 
-	for t in range(3, 0, -1):
-		timer.text = str(t)
-		await get_tree().create_timer(1).timeout
+		for t in range(3, 0, -1):
+			timer.text = str(t)
+			await get_tree().create_timer(1).timeout
 
-	timer.visible = false
-	GameState.is_transitioning = false
+		timer.visible = false
+		GameState.is_transitioning = false
 	fade_instance = null

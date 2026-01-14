@@ -7,4 +7,6 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		if GameState.player_health > 0:
+			GlobalSoundPlayer.spikes_hit.play()
 		body.take_damage(damage)

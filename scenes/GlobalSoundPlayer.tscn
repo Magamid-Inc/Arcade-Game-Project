@@ -1,0 +1,96 @@
+[gd_scene load_steps=20 format=3 uid="uid://bdlf3lehrhtbu"]
+
+[ext_resource type="Script" uid="uid://dtpwoq2b8ibr4" path="res://scripts/global_sound_player_script.gd" id="1_lkau7"]
+[ext_resource type="AudioStream" uid="uid://bok5k3pv7g5ka" path="res://assets/sounds/lobby_music.mp3" id="2_g2y55"]
+[ext_resource type="AudioStream" uid="uid://rttsqpc1njpy" path="res://assets/sounds/lvl_music.mp3" id="3_rgyy8"]
+[ext_resource type="AudioStream" uid="uid://dkkp77xcgmmkk" path="res://assets/sounds/game_over.mp3" id="4_ismvk"]
+[ext_resource type="AudioStream" uid="uid://c5ony8skjx3jo" path="res://assets/sounds/fadeout_sound.mp3" id="5_qwosg"]
+[ext_resource type="AudioStream" uid="uid://dcfjnefwmahtm" path="res://assets/sounds/lvl_complete.mp3" id="6_vso2t"]
+[ext_resource type="AudioStream" uid="uid://bsn2qwherxaob" path="res://assets/sounds/open_store.wav" id="7_30tmm"]
+[ext_resource type="AudioStream" uid="uid://5d8np0a1dyi2" path="res://assets/sounds/start_lvl_timer.mp3" id="8_trdm6"]
+[ext_resource type="AudioStream" uid="uid://cfaekuec8ib72" path="res://assets/sounds/take_coin.wav" id="9_33o85"]
+[ext_resource type="AudioStream" uid="uid://c87h2s3gyvd4m" path="res://assets/sounds/take_item.wav" id="10_8xdi1"]
+[ext_resource type="AudioStream" uid="uid://dvhct40idewtf" path="res://assets/sounds/boost.wav" id="11_rm6ai"]
+[ext_resource type="AudioStream" uid="uid://bsuvltial0ov4" path="res://assets/sounds/heal.mp3" id="12_vjqjf"]
+[ext_resource type="AudioStream" uid="uid://c088ab1jwaiic" path="res://assets/sounds/potion_use.wav" id="13_a8xwb"]
+[ext_resource type="AudioStream" uid="uid://b1u1jrrpw2ja2" path="res://assets/sounds/shield.wav" id="14_yl5vm"]
+[ext_resource type="AudioStream" uid="uid://53c8hv6wy1xq" path="res://assets/sounds/steps_3_per_s.wav" id="15_iyu6x"]
+[ext_resource type="AudioStream" uid="uid://cva3pa336x0hx" path="res://assets/sounds/steps_5_per_s.wav" id="16_bri7b"]
+[ext_resource type="AudioStream" uid="uid://ds5a5skhlj8do" path="res://assets/sounds/meteor_hit.wav" id="17_3376l"]
+[ext_resource type="AudioStream" uid="uid://c08njumvhu8ap" path="res://assets/sounds/spikes_hit.wav" id="18_qeuei"]
+[ext_resource type="AudioStream" uid="uid://ccijdhx66tq33" path="res://assets/sounds/die.mp3" id="19_yal8f"]
+
+[node name="GlobalSoundPlayer" type="Node2D"]
+script = ExtResource("1_lkau7")
+
+[node name="MusicLobby" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g2y55")
+bus = &"Music"
+
+[node name="MusicLVL" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rgyy8")
+bus = &"Music"
+
+[node name="game_over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ismvk")
+bus = &"SFX_World"
+
+[node name="fadeout" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qwosg")
+bus = &"SFX_World"
+
+[node name="LvlComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vso2t")
+bus = &"SFX_World"
+
+[node name="OpenStore" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_30tmm")
+bus = &"SFX_World"
+
+[node name="StartLvlTimer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_trdm6")
+bus = &"SFX_World"
+
+[node name="TakeCoin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_33o85")
+bus = &"SFX_World"
+
+[node name="TakeItem" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8xdi1")
+bus = &"SFX_World"
+
+[node name="Boost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_rm6ai")
+bus = &"SFX_Items_Use"
+
+[node name="Heal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_vjqjf")
+bus = &"SFX_Items_Use"
+
+[node name="PotionUse" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_a8xwb")
+bus = &"SFX_Items_Use"
+
+[node name="Shield" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_yl5vm")
+bus = &"SFX_Items_Use"
+
+[node name="Step3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_iyu6x")
+bus = &"SFX_Player"
+
+[node name="Step5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_bri7b")
+bus = &"SFX_Player"
+
+[node name="MeteorHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_3376l")
+bus = &"SFX_Player"
+
+[node name="SpikesHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_qeuei")
+bus = &"SFX_Player"
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_yal8f")
+bus = &"SFX_Player"

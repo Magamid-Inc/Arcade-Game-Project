@@ -22,6 +22,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if check_can_open:
 		if Input.is_action_just_pressed("open_menu") and !terminal.visible:
+			GlobalSoundPlayer.open_store.play()
 			terminal.visible = true
 			help_label.text = ""
 
@@ -34,7 +35,6 @@ func _close_terminal():
 func _open_terminal_permission(_delta):
 	check_can_open = true
 	help_label.text = "Нажмите 'E' чтобы открыть"
-	#terminal.visible = true
 
 
 func _open_terminal_ban(_delta):

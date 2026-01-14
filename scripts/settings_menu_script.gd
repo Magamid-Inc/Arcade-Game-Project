@@ -60,6 +60,7 @@ func save_volume():
 	GameSettingsState.global_volume = last_volumes[0]
 	GameSettingsState.ambient_volume = last_volumes[1]
 	GameSettingsState.music_volume = last_volumes[2]
+	GlobalSoundPlayer.update_all_volume()
 
 func set_window_mode():
 	var selected_index: int = button_display_mode.selected

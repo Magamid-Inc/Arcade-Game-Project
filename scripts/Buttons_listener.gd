@@ -5,7 +5,6 @@ var is_terminal_open := false
 
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
-	print("InputManager загружен")
 
 
 func _input(event: InputEvent):
@@ -20,6 +19,7 @@ func _input(event: InputEvent):
 			is_terminal_open = terminal.visible
 		
 		if terminal != null && is_terminal_open:
+			GlobalSoundPlayer.open_store.play()
 			terminal.visible = false
 			is_terminal_open = false
 			

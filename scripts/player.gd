@@ -11,7 +11,7 @@ extends CharacterBody2D
 # -----------------------------
 # СОСТОЯНИЕ
 # -----------------------------
-var check_die: bool = false
+#var check_die: bool = false
 
 # -----------------------------
 # ДВИЖЕНИЕ
@@ -29,6 +29,7 @@ var is_flashing: bool = false
 
 
 func _ready() -> void:
+	animated_sprite.play("idle")
 	pickup_area.area_entered.connect(_on_pickup_area_area_entered)
 	animated_sprite.modulate = Color.WHITE
 
@@ -40,7 +41,9 @@ func _physics_process(_delta: float) -> void:
 	# -----------------------------
 	# ВВОД ДВИЖЕНИЯ
 	# -----------------------------
-	if not check_die and ScreenFader.fade_instance == null and not ButtonsListener.is_terminal_open:
+	if animated_sprite.animation == "die":
+		return
+	elif ScreenFader.fade_instance == null && !ButtonsListener.is_terminal_open:
 		if Input.is_action_pressed("move_up"):
 			direction.y -= 1
 		if Input.is_action_pressed("move_down"):
@@ -57,13 +60,16 @@ func _physics_process(_delta: float) -> void:
 	# РАЗВОРОТ
 	# -----------------------------
 	if direction.x != 0:
+		GlobalSoundPlayer.play_walk()
 		animated_sprite.flip_h = direction.x < 0
+	elif direction.y != 0:
+		GlobalSoundPlayer.play_walk()
 
 	# -----------------------------
 	# АНИМАЦИИ
 	# -----------------------------
-	if check_die:
-		return
+	#if check_die:
+		#return
 
 	if direction == Vector2.ZERO:
 		animated_sprite.play("idle")
@@ -87,10 +93,11 @@ func _process(delta: float) -> void:
 # --------------------------------------------------
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	if check_die:
+	if animated_sprite.animation == "die":
 		return
 
 	if area.is_in_group("coin"):
+		GlobalSoundPlayer.take_coin.play()
 		GameState.money += 1
 		area.queue_free()
 		return
@@ -99,6 +106,7 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 		if area.has_method("get_item_data"):
 			var item = area.get_item_data()
 			if inventory.add_item(item):
+				GlobalSoundPlayer.take_item.play()
 				area.queue_free()
 
 
@@ -107,8 +115,9 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 # --------------------------------------------------
 
 func take_damage(amount: int) -> void:
-	if check_die or GameState.timeout_shield or GameState.is_transitioning:
-		return
+	if GameState.player_health <= 0 or GameState.timeout_shield or GameState.is_transitioning:
+		if animated_sprite.animation == "die":
+			return
 
 	# 🔴 ВИЗУАЛЬНЫЙ ФИДБЕК
 	flash_on_hit()
@@ -117,7 +126,6 @@ func take_damage(amount: int) -> void:
 	GameState.player_health = clamp(GameState.player_health, 0, GameState.max_health)
 
 	if GameState.player_health <= 0:
-		check_die = true
 		die()
 
 
@@ -133,9 +141,10 @@ func die() -> void:
 		return
 #	#ошбику даёт
 	#collision_shape.disabled = true
+	GlobalSoundPlayer.die.play()
+	GlobalSoundPlayer.music_lvl.stop()
 	animated_sprite.modulate = Color.WHITE
 	animated_sprite.play("die")
-	#$"../GameOverScreen".visible = true
 
 
 # --------------------------------------------------

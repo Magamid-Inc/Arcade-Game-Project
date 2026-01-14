@@ -23,6 +23,7 @@ ScreenFader="*res://scripts/screen_fade_manager.gd"
 GameSettingsState="*res://scripts/GameSettingsState.gd"
 SceneManager="*res://scripts/Scene_manager.gd"
 ButtonsListener="*res://scripts/Buttons_listener.gd"
+GlobalSoundPlayer="*res://scenes/GlobalSoundPlayer.tscn"
 
 [display]
 

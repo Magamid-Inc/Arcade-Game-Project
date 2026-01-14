@@ -19,6 +19,7 @@ func _press_buy():
 		if GameState.money >= item_used.price:
 			GameState.money -= item_used.price
 			GameState.itemscounts[item_used.identity] += 1
+			GlobalSoundPlayer.take_coin.play()
 			if help_l != null:
 				help_l.text = "Куплено!"
 				await get_tree().create_timer(3).timeout
