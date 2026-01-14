@@ -119,14 +119,13 @@ func take_damage(amount: int) -> void:
 		if animated_sprite.animation == "die":
 			return
 
-	# 🔴 ВИЗУАЛЬНЫЙ ФИДБЕК
-	flash_on_hit()
+	if !GameState.shield_active:
+		flash_on_hit()
+		GameState.player_health -= amount
+		GameState.player_health = clamp(GameState.player_health, 0, GameState.max_health)
 
-	GameState.player_health -= amount
-	GameState.player_health = clamp(GameState.player_health, 0, GameState.max_health)
-
-	if GameState.player_health <= 0:
-		die()
+		if GameState.player_health <= 0:
+			die()
 
 
 func flash_on_hit() -> void:

@@ -19,6 +19,8 @@ var timeout_heal = false
 var timeout_boost = false
 var timeout_shield = false
 
+var shield_active: bool = false
+
 var occupied_cells: Array[Vector2i] = []
 
 func _ready():

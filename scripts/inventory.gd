@@ -95,8 +95,10 @@ func remove_item (item : Item = null):
 				GameState.timeout_shield = true
 				GlobalSoundPlayer.shield.play()
 				%Player.shield_effect.visible = true
+				GameState.shield_active = true
 				await get_tree().create_timer(item.time).timeout
 				%Player.shield_effect.visible = false
 				GameState.timeout_shield = false
+				GameState.shield_active = false
 			else:
 				GameState.itemscounts[item.identity] += 1
