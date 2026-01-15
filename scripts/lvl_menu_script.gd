@@ -9,7 +9,9 @@ func _ready():
 
 func pressed_continue_button():
 	get_tree().paused = false
-	if FileAccess.file_exists("res://scenes/level"+str(GameSettingsState.selected_lvl+1)+".tscn"):
+	var is_exist = ResourceLoader.exists("res://scenes/level"+str(GameSettingsState.selected_lvl+1)+".tscn")
+	print(is_exist)
+	if is_exist:
 		GameSettingsState.selected_lvl += 1
 	else:
 		GameSettingsState.selected_lvl = 1 

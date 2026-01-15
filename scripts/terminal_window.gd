@@ -28,6 +28,7 @@ func _process(_delta: float) -> void:
 
 
 func _close_terminal():
+	GlobalSoundPlayer.open_store.play()
 	terminal.visible = false
 	help_label.text = "Нажмите 'E' чтобы открыть"
 

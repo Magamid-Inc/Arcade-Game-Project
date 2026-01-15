@@ -7,7 +7,7 @@
 script = ExtResource("2_r78et")
 price = 20
 name = "Аптечка"
-description = "классический большой предмет восстановления. Лечение: +25 HP"
+description = "Классический большой предмет восстановления. Лечение: +25 HP."
 max_stack_size = 4
 icon = ExtResource("1_vk30r")
 identity = "medkit"

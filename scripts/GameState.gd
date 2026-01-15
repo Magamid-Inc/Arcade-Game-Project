@@ -12,7 +12,7 @@ var player_health: int = 100
 var max_health: int = 100
 var SPEED: float = 300.0
 
-var money: int = 10
+var money: int = 200
 var itemscounts = {}
 
 var timeout_heal = false

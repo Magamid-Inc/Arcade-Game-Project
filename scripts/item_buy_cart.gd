@@ -12,6 +12,7 @@ func set_item(item):
 	label.text = str(item.price)
 	image.texture = item.icon
 	item_used = item
+	self.tooltip_text = item.description.replace(". ", ".\n").replace("  ", "\n")
 
 func _press_buy():
 	var help_l = get_node_or_null("../../Interface/HelpLabel")

@@ -2,7 +2,9 @@ extends Node
 
 func press_continue_button():
 	get_tree().paused = false
-	get_tree().current_scene.get_node("MeteoriteSpawner").set_schedule_next(true)
+	var meteor_spawner = get_tree().current_scene.get_node_or_null("MeteoriteSpawner")
+	if meteor_spawner != null:
+		meteor_spawner.set_schedule_next(true)
 	self.visible = false
 	var filter = get_node("../blurFilter")
 	if filter:
@@ -17,7 +19,6 @@ func press_settings_button():
 	var settings_menu = SceneManager.add_subscene("res://scenes/settings_menu.tscn")
 	if settings_menu:
 		settings_menu.process_mode = Node.PROCESS_MODE_ALWAYS
-	#get_tree().change_scene_to_file("res://scenes/settings_menu.tscn")
 
 
 func press_quit_game_button():

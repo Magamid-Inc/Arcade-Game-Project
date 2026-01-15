@@ -26,7 +26,9 @@ func visible_lvl_compl_menu(is_show: bool):
 
 func visible_fast_menu(is_show: bool):
 	get_tree().paused = true
-	get_tree().current_scene.get_node("MeteoriteSpawner").set_schedule_next(false)
+	var meteor_spawner = get_tree().current_scene.get_node_or_null("MeteoriteSpawner")
+	if meteor_spawner != null:
+		meteor_spawner.set_schedule_next(false)
 	menu_inspector.filter.visible = is_show
 	menu_inspector.fast_menu.visible = is_show
 	check_visible_fast_menu = is_show

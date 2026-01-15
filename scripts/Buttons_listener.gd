@@ -22,11 +22,11 @@ func _input(event: InputEvent):
 			GlobalSoundPlayer.open_store.play()
 			terminal.visible = false
 			is_terminal_open = false
+			terminal.help_label.text = "Нажмите 'E' чтобы открыть"
 			
 		elif interface != null:
 			if not interface.check_visible_fast_menu:
 				interface.visible_fast_menu(true)
-				#get_tree().paused = true
 			else:
 				interface.visible_fast_menu(false)
 				get_tree().paused = false
